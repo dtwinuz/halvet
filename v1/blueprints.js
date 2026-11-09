@@ -258,7 +258,7 @@
         { t: 'O‘lchov kamerasi', d: 'pH va Rx (ORP) datchiklari suvni uzluksiz o‘lchaydi.' },
         { t: 'Dozalash kontrolleri', d: 'Me‘yordan chiqsa o‘zi to‘g‘rilaydi, qo‘lda quyish yo‘q.' },
         { t: 'pH− kanistrasi', d: 'pH 7,2–7,6 oralig‘ida: ko‘z achishmaydi, xlor samarali ishlaydi.' },
-        { t: 'Xlor kanistrasi', d: 'Erkin xlor 0,5–1,5 mg/l — hidsiz va toza suv.' },
+        { t: 'Xlor kanistrasi', d: 'Erkin xlor odatda 1–3 mg/l diapazonda; aniq qiymat loyiha va mahalliy me’yorga bog‘liq.' },
         { t: 'Peristaltik nasos 1', d: 'Mikro dozalar, aniq va jim.' },
         { t: 'UV lampa', d: 'Mikroblarni zararsizlantiradi, xlor sarfini kamaytiradi.' },
         { t: 'Issiqlik almashtirgich', d: 'Kimyo isitgichdan keyin qo‘shiladi — metall himoyalanadi.' },

@@ -358,6 +358,17 @@
 
   /* kosa qatlamlari: scroll bilan ajraladi, ro'yxat qatlamni yoritadi */
   var lay = $('[data-layers]');
+  /* shisha mozaika: basseyn tubi shader'i — faqat ko'rinishga yaqinlashganda ishga tushadi */
+  var mz = $('[data-mosaic]');
+  if (mz) {
+    var mzCv = $('[data-mosaic-gl]', mz), hint = $('[data-mosaic-hint]', mz);
+    if (hint && !hoverDev) hint.textContent = 'Barmoq bilan teging';
+    new IntersectionObserver(function (e, o) {
+      if (!e[0].isIntersecting) return; o.disconnect();
+      if (!window.HVMosaic || saveData) return;
+      try { if (window.HVMosaic(mzCv, mz, { still: reduce, onLost: function () { mz.classList.remove('is-gl'); } })) mz.classList.add('is-gl'); } catch (err) { /* CSS fon qoladi */ }
+    }, { rootMargin: '400px 0px' }).observe(mz);
+  }
   /* girih: scroll bilan chiziladigan naqsh (to'r -> yulduz -> tosh), sichqoncha ortidan yorug'lik */
   var gh = $('[data-girih]');
   if (gh && window.HVGirih) {

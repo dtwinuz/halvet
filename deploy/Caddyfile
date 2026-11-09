@@ -11,7 +11,7 @@
 	header @img Cache-Control "public, max-age=604800"
 
 	# deploy.sh css/js manzillariga ?v=<sha> qo'shadi — uzoq kesh xavfsiz
-	@code path /styles.css /app.js /blueprints.js /fog.js /steam.js /girih.js /dome.js /spaces3d.js /equip3d.js /fonts/* /vendor/*
+	@code path /styles.css /app.js /blueprints.js /systems.js /fog.js /steam.js /girih.js /mosaic.js /dome.js /spaces3d.js /equip3d.js /fonts/* /vendor/*
 	header @code Cache-Control "public, max-age=31536000, immutable"
 
 	@meta path /icon.svg /robots.txt /sitemap.xml
