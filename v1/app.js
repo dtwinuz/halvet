@@ -358,6 +358,19 @@
 
   /* kosa qatlamlari: scroll bilan ajraladi, ro'yxat qatlamni yoritadi */
   var lay = $('[data-layers]');
+  /* kayfiyat videolari: ko'ringanda yuklanadi va o'ynaydi, chiqqanda to'xtaydi */
+  if (!saveData) $$('[data-reel] video').forEach(function (v) {
+    var loaded = false;
+    new IntersectionObserver(function (e) {
+      if (e[0].isIntersecting) {
+        if (!loaded) { v.src = v.getAttribute('data-src'); loaded = true; }
+        if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      } else if (loaded) v.pause();
+    }, { rootMargin: '200px 0px', threshold: .15 }).observe(v);
+  });
+  /* aqlli boshqaruv konsepsiyasi: jonli namuna panel + Telegram mini-app */
+  var iot = $('[data-iot]');
+  if (iot && window.HVIot) { try { window.HVIot(iot, { still: reduce }); } catch (err) { /* statik namuna qoladi */ } }
   /* shisha mozaika: basseyn tubi shader'i — faqat ko'rinishga yaqinlashganda ishga tushadi */
   var mz = $('[data-mosaic]');
   if (mz) {

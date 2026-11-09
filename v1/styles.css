@@ -790,3 +790,95 @@ html.lenis,html.lenis body{height:auto}
 @keyframes hvPing{0%{transform:scale(.6);opacity:1}100%{transform:scale(1.5);opacity:0}}
 @media (max-width:900px){.hv-mosaic{cursor:auto}.hv-mosaic__body h2{font-size:40px}}
 @media (prefers-reduced-motion:reduce){.hv-mosaic__hint::before{animation:none}}
+
+/* ===== v1.6: aqlli boshqaruv (konsepsiya) ===== */
+.hv-iot{background:radial-gradient(ellipse 70% 60% at 80% 20%,rgba(169,106,62,.14),transparent 70%),linear-gradient(180deg,#14110f,#0f0d0c);color:var(--on-dark)}
+.hv-iot__head{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(24px,5vw,80px);align-items:end;margin-bottom:clamp(30px,4vw,54px)}
+.hv-iot__head h2{margin-top:12px}
+.hv-iot__head>p{color:var(--on-dark-soft);max-width:46ch}
+.hv-soon{display:inline-block;margin-left:10px;padding:5px 10px;border-radius:999px;border:1px solid rgba(233,168,115,.5);color:#e9a873;font-size:10px;letter-spacing:.14em;vertical-align:1px}
+.hv-iot__grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(20px,3vw,40px);align-items:center}
+.hv-iot__dash{border-radius:14px;padding:18px;background:linear-gradient(180deg,rgba(255,246,236,.06),rgba(255,246,236,.025));border:1px solid rgba(255,240,225,.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.6)}
+.hv-iot__bar{display:flex;align-items:center;gap:14px;padding:4px 6px 16px}
+.hv-iot__bar div{flex:1}.hv-iot__bar b{display:block;font:400 22px/1.1 var(--serif)}.hv-iot__bar span{font-size:12px;color:var(--on-dark-soft)}
+.hv-iot__live{font-style:normal;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#9fd3a8;display:flex;align-items:center;gap:7px}
+.hv-iot__live::before{content:"";width:7px;height:7px;border-radius:50%;background:#7fd08f;box-shadow:0 0 10px #7fd08f;animation:hvBlink 1.8s infinite}
+@keyframes hvBlink{50%{opacity:.35}}
+.hv-iot__bar time{font:500 13px var(--sans);padding:7px 11px;border-radius:8px;border:1px solid rgba(255,240,225,.12);color:var(--on-dark-soft)}
+.hv-iot__kpis{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.hv-kpi{position:relative;padding:12px 12px 6px;border-radius:10px;background:rgba(255,246,236,.045);border:1px solid rgba(255,240,225,.08);overflow:hidden;transition:border-color .4s,background .4s}
+.hv-kpi span{font-size:11.5px;color:var(--on-dark-soft)}
+.hv-kpi p{margin:6px 0 2px;display:flex;align-items:baseline;gap:4px}
+.hv-kpi b{font:400 26px/1 var(--serif);font-variant-numeric:lining-nums tabular-nums}
+.hv-kpi em{font-style:normal;font-size:12px;color:var(--on-dark-soft)}
+.hv-kpi small{font-size:11px;color:#9fd3a8}
+.hv-kpi svg{display:block;width:100%;height:28px;margin-top:4px}
+.hv-kpi path{fill:none;stroke:#e9a873;stroke-width:1.6;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.hv-kpi.is-bad{border-color:rgba(255,138,90,.55);background:rgba(255,120,70,.08)}.hv-kpi.is-bad small{color:#ff9a6a}
+.hv-iot__row{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:10px;margin-top:10px}
+.hv-iot__card{border-radius:10px;padding:14px;background:rgba(255,246,236,.035);border:1px solid rgba(255,240,225,.08)}
+.hv-iot__card h4{font:500 13px var(--sans);margin:0 0 10px;color:var(--on-dark)}
+.hv-iot__chart svg{width:100%;height:150px;display:block}
+.c-grid{stroke:rgba(255,240,225,.08);fill:none}
+.c-t,.c-ph,.c-cl{fill:none;stroke-width:2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.c-t{stroke:#e9a873}.c-ph{stroke:#b9a6e8}.c-cl{stroke:#7fd3c4}
+.hv-iot__legend{list-style:none;display:flex;gap:14px;margin:8px 0 0;padding:0;font-size:11.5px;color:var(--on-dark-soft)}
+.hv-iot__legend li::before{content:"";display:inline-block;width:14px;height:2px;margin-right:6px;vertical-align:middle;background:var(--lc)}
+.l-t{--lc:#e9a873}.l-ph{--lc:#b9a6e8}.l-cl{--lc:#7fd3c4}
+.hv-iot__dev ul{list-style:none;margin:0;padding:0}
+.hv-iot__dev li{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto;column-gap:10px;padding:7px 0;border-top:1px solid rgba(255,240,225,.06)}
+.hv-iot__dev li:first-child{border-top:0}
+.hv-iot__dev li span{font-size:13.5px}.hv-iot__dev li small{grid-row:2;font-size:11px;color:var(--on-dark-soft)}
+.hv-iot__dev li .hv-sw{grid-row:1/3;grid-column:2;align-self:center}
+.hv-sw{position:relative;width:38px;height:22px;border-radius:999px;border:0;background:rgba(255,240,225,.16);cursor:pointer;transition:background .3s}
+.hv-sw::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#e8e2d9;transition:transform .35s var(--ease)}
+.hv-sw.is-on{background:#5aa76a}.hv-sw.is-on::after{transform:translateX(16px)}
+.hv-sw:focus-visible,.hv-pdev:focus-visible{outline:2px solid #e9a873;outline-offset:2px}
+.hv-iot__feed ol{list-style:none;margin:0;padding:0}
+.hv-iot__feed li{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-top:1px solid rgba(255,240,225,.06);font-size:12.5px;color:var(--on-dark-soft);transition:background .9s}
+.hv-iot__feed li:first-child{border-top:0}
+.hv-iot__feed li span::before{content:"\2713";color:#7fd08f;margin-right:7px}
+.hv-iot__feed li.is-new{background:rgba(233,168,115,.12);color:var(--on-dark)}
+.hv-iot__feed time{font-size:11px;opacity:.7;white-space:nowrap}
+.hv-phone{position:relative;width:300px;margin:0 auto;padding:14px 14px 18px;border-radius:44px;background:#0b0a09;border:1px solid rgba(255,240,225,.14);box-shadow:0 0 0 8px #1c1916,0 50px 90px -30px rgba(0,0,0,.8)}
+.hv-phone__top{display:flex;align-items:center;justify-content:space-between;padding:6px 14px 10px;font:600 12px var(--sans)}
+.hv-phone__tg{padding:4px 12px;border-radius:999px;background:#2b8fd8;color:#fff;font-size:11px}
+.hv-phone__top i{width:22px;height:10px;border-radius:3px;border:1px solid rgba(255,255,255,.6)}
+.hv-phone__app{text-align:center;padding-bottom:10px}.hv-phone__app b{display:block;font:400 19px var(--serif)}.hv-phone__app span{font-size:11px;color:var(--on-dark-soft)}
+.hv-phone__hero{position:relative;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:16/9}
+.hv-phone__hero img{width:100%;height:100%;object-fit:cover;display:block;transition:filter .8s}
+.hv-iot.is-dark .hv-phone__hero img{filter:brightness(.32) saturate(.6)}
+.hv-phone__hero figcaption{position:absolute;left:12px;bottom:10px;right:12px;display:flex;justify-content:space-between;align-items:end;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+.hv-phone__hero figcaption b{font:400 16px var(--serif)}.hv-phone__hero figcaption span{font-size:10.5px;padding:3px 8px;border-radius:999px;background:rgba(20,40,24,.7);color:#9fe0aa}
+.hv-phone__tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.hv-phone__tiles div{padding:9px 8px;border-radius:10px;background:rgba(255,246,236,.05);border:1px solid rgba(255,240,225,.07);transition:border-color .4s}
+.hv-phone__tiles div.is-bad{border-color:rgba(255,138,90,.6)}
+.hv-phone__tiles span{display:block;font-size:10px;color:var(--on-dark-soft)}.hv-phone__tiles b{font:400 19px var(--serif)}.hv-phone__tiles em{font-style:normal;font-size:9.5px;margin-left:2px;color:var(--on-dark-soft)}
+.hv-phone__chart{margin-top:8px;padding:9px 10px 4px;border-radius:10px;background:rgba(255,246,236,.035)}
+.hv-phone__chart span{font-size:10px;color:var(--on-dark-soft)}
+.hv-phone__chart svg{width:100%;height:56px;display:block}
+.hv-phone__chart path{fill:none;stroke:#7fd3c4;stroke-width:2;vector-effect:non-scaling-stroke}
+.hv-phone__devs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.hv-pdev{padding:10px 4px;border-radius:10px;border:1px solid rgba(255,240,225,.1);background:rgba(255,246,236,.04);color:var(--on-dark-soft);cursor:pointer;font:500 12px var(--sans);transition:background .3s,border-color .3s,color .3s}
+.hv-pdev b{font-weight:500}.hv-pdev.is-on{background:rgba(90,167,106,.18);border-color:rgba(127,208,143,.5);color:#cfeed5}
+.hv-phone__alert{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,160,90,.55);background:rgba(255,130,60,.1);transition:background .4s,border-color .4s}
+.hv-phone__alert b{display:block;font-size:12.5px;font-weight:600}.hv-phone__alert span{font-size:11px;color:var(--on-dark-soft)}
+.hv-phone__alert::before{content:"!";float:left;width:22px;height:22px;margin-right:9px;border-radius:50%;background:#e98a4f;color:#1a1009;font:700 13px/22px var(--sans);text-align:center}
+.hv-phone__alert.is-ok{border-color:rgba(127,208,143,.35);background:rgba(90,167,106,.08)}
+.hv-phone__alert.is-ok::before{content:"\2713";background:#7fd08f}
+@media (max-width:1180px){.hv-iot__kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.hv-iot__row{grid-template-columns:1fr 1fr}.hv-iot__chart{grid-column:1/-1}}
+@media (max-width:900px){.hv-iot__head,.hv-iot__grid{grid-template-columns:1fr}.hv-iot__dash{padding:12px}.hv-iot__bar b{font-size:18px}.hv-kpi b{font-size:22px}}
+@media (max-width:600px){.hv-iot__kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.hv-iot__row{grid-template-columns:1fr}.hv-iot__live{display:none}.hv-phone{width:min(300px,100%)}}
+@media (prefers-reduced-motion:reduce){.hv-iot__live::before{animation:none}}
+
+/* ===== v1.6: kayfiyat videolari ===== */
+.hv-reel{background:#0f0d0c;color:var(--on-dark)}
+.hv-reel__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.4vw,20px)}
+.hv-reel__clip{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:3/4;background:#1a1714}
+.hv-reel__clip video{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1.2s var(--ease)}
+.hv-reel__clip:hover video{transform:scale(1.03)}
+.hv-reel__clip figcaption{position:absolute;left:20px;bottom:18px;font:300 clamp(26px,2.6vw,40px)/1 var(--serif);text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.hv-reel__clip::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,rgba(10,8,7,.55),rgba(10,8,7,0) 45%)}
+.hv-foot__credit{font-size:11.5px;opacity:.6;margin-top:6px}
+@media (max-width:700px){.hv-reel__grid{grid-template-columns:repeat(3,72%);overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px}.hv-reel__clip{scroll-snap-align:start}}
+@media (max-width:600px){.hv-kpi{padding:10px 10px 4px}.hv-kpi b{font-size:20px}.hv-kpi span,.hv-kpi small{font-size:10.5px}.hv-kpi svg{height:20px}.hv-iot__chart svg{height:110px}}

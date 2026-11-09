@@ -140,6 +140,20 @@
   <div class="hv-wrap hv-band__text"><p data-reveal>Hammom, sauna va basseyn: bitta hovlida, bitta loyiha sifatida.</p></div>
 </section>
 
+<section class="hv-sec hv-reel" aria-labelledby="rl-h">
+  <div class="hv-wrap">
+    <div class="hv-head hv-head--dark" data-reveal>
+      <p class="hv-eyebrow">Kayfiyat</p>
+      <h2 id="rl-h">Bug‘, suv va sukunat</h2>
+    </div>
+    <div class="hv-reel__grid">
+      <figure class="hv-reel__clip" data-reel><video muted loop playsinline preload="none" poster="media/sauna.webp" data-src="media/sauna.mp4" width="600" height="800" aria-hidden="true"></video><figcaption>Bug‘</figcaption></figure>
+      <figure class="hv-reel__clip" data-reel><video muted loop playsinline preload="none" poster="media/jomrak.webp" data-src="media/jomrak.mp4" width="600" height="800" aria-hidden="true"></video><figcaption>Suv</figcaption></figure>
+      <figure class="hv-reel__clip" data-reel><video muted loop playsinline preload="none" poster="media/basseyn.webp" data-src="media/basseyn.mp4" width="600" height="800" aria-hidden="true"></video><figcaption>Sukunat</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="hv-sec hv-ritual" id="ritual" aria-labelledby="ri-h">
   <div class="hv-wrap">
     <div class="hv-head" data-reveal>
@@ -299,6 +313,80 @@
   </div>
 </section>
 
+<section class="hv-sec hv-iot" id="boshqaruv" aria-labelledby="iot-h" data-iot>
+  <div class="hv-wrap">
+    <div class="hv-iot__head" data-reveal>
+      <div>
+        <p class="hv-eyebrow">Aqlli boshqaruv <span class="hv-soon">Tez kunda · konsepsiya</span></p>
+        <h2 id="iot-h">Basseyn va hammom telefoningizda</h2>
+      </div>
+      <p>Harorat, pH va xlor jonli kuzatiladi; nasos, isitish va yoritish bir tugmada. Quyidagi panel — bosib ko‘rish mumkin bo‘lgan namuna, qiymatlar simulyatsiya.</p>
+    </div>
+    <div class="hv-iot__grid" data-reveal>
+      <div class="hv-iot__dash" role="group" aria-label="Boshqaruv paneli namunasi">
+        <header class="hv-iot__bar">
+          <div><b>Halvet · Boshqaruv</b><span>Hammom majmuasi · HV-01</span></div>
+          <i class="hv-iot__live">Jonli namuna</i>
+          <time data-iot-clock>--:--</time>
+        </header>
+        <div class="hv-iot__kpis">
+          <div class="hv-kpi" data-k="temp"><span>Suv harorati</span><p><b data-v>27,4</b><em>°C</em></p><small>Maqsad 27,0</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+          <div class="hv-kpi" data-k="ph"><span>pH</span><p><b data-v>7,34</b></p><small>Me’yor 7,2–7,6</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+          <div class="hv-kpi" data-k="cl"><span>Erkin xlor</span><p><b data-v>1,8</b><em>mg/l</em></p><small>Me’yor 1–3</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+          <div class="hv-kpi" data-k="lvl"><span>Suv sathi</span><p><b data-v>98</b><em>%</em></p><small>Me’yorda</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+          <div class="hv-kpi" data-k="pump"><span>Nasos yuklanishi</span><p><b data-v>72</b><em>%</em></p><small>Chastota o‘zgartirgich</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+          <div class="hv-kpi" data-k="kwh"><span>Energiya</span><p><b data-v>12,4</b><em>kWh</em></p><small>Bugun</small><svg viewBox="0 0 120 30" aria-hidden="true"><path data-spark/></svg></div>
+        </div>
+        <div class="hv-iot__row">
+          <div class="hv-iot__card hv-iot__chart">
+            <h4>Suv parametrlari · 24 soat</h4>
+            <svg viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true"><path class="c-grid" d="M0 35H400M0 70H400M0 105H400"/><path class="c-t"/><path class="c-ph"/><path class="c-cl"/></svg>
+            <ul class="hv-iot__legend"><li class="l-t">Harorat</li><li class="l-ph">pH</li><li class="l-cl">Xlor</li></ul>
+          </div>
+          <div class="hv-iot__card hv-iot__dev">
+            <h4>Qurilmalar</h4>
+            <ul>
+              <li><span>Nasos</span><small data-st>Ishlamoqda · 72%</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="Nasos" data-dev="pump"></button></li>
+              <li><span>Filtr</span><small>Toza</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="Filtr" data-dev="filter"></button></li>
+              <li><span>Isitish</span><small data-st>Maqsad 27,0 °C</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="Isitish" data-dev="heat"></button></li>
+              <li><span>pH dozalash</span><small>Avto</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="pH dozalash" data-dev="dosePh"></button></li>
+              <li><span>Xlor dozalash</span><small>Avto</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="Xlor dozalash" data-dev="doseCl"></button></li>
+              <li><span>Yoritish</span><small>Kechki ssenariy</small><button type="button" class="hv-sw is-on" role="switch" aria-checked="true" aria-label="Yoritish" data-dev="light"></button></li>
+            </ul>
+          </div>
+          <div class="hv-iot__card hv-iot__feed">
+            <h4>So‘nggi hodisalar</h4>
+            <ol data-feed>
+              <li><span>pH avtomatik sozlandi (7,30)</span><time>14:12</time></li>
+              <li><span>Xlor dozasi berildi (+0,1 mg/l)</span><time>13:47</time></li>
+              <li><span>Filtr teskari yuvish tugadi</span><time>12:00</time></li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="hv-iot__phone">
+        <div class="hv-phone" role="group" aria-label="Telegram mini-app namunasi">
+          <div class="hv-phone__top"><time data-iot-clock>--:--</time><span class="hv-phone__tg">Telegram</span><i></i></div>
+          <div class="hv-phone__app"><b>Halvet</b><span>Mini App</span></div>
+          <figure class="hv-phone__hero"><img src="img/hammom2-640.webp" alt="" loading="lazy" decoding="async" width="640" height="480"><figcaption><b>Hammom basseyni</b><span>Onlayn</span></figcaption></figure>
+          <div class="hv-phone__tiles">
+            <div data-pk="temp"><span>Suv</span><b data-v>27,4</b><em>°C</em></div>
+            <div data-pk="ph"><span>pH</span><b data-v>7,34</b></div>
+            <div data-pk="cl"><span>Xlor</span><b data-v>1,8</b><em>mg/l</em></div>
+          </div>
+          <div class="hv-phone__chart"><span>Harorat · 24 soat</span><svg viewBox="0 0 300 90" preserveAspectRatio="none" aria-hidden="true"><path data-pchart/></svg></div>
+          <div class="hv-phone__devs">
+            <button type="button" class="hv-pdev is-on" role="switch" aria-checked="true" data-dev="pump"><b>Nasos</b></button>
+            <button type="button" class="hv-pdev is-on" role="switch" aria-checked="true" data-dev="heat"><b>Isitish</b></button>
+            <button type="button" class="hv-pdev is-on" role="switch" aria-checked="true" data-dev="light"><b>Yoritish</b></button>
+          </div>
+          <div class="hv-phone__alert is-ok" data-alert><b data-alert-t>Hammasi me’yorda</b><span data-alert-s>pH, xlor va harorat nazoratda</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="hv-sec hv-craft" id="hunar" aria-labelledby="cr-h">
   <div class="hv-wrap hv-craft__grid">
     <figure class="hv-craft__photo hv-clip" data-reveal><img src="img/mozaika-1600.webp" srcset="img/mozaika-640.webp 640w, img/mozaika-1024.webp 1024w, img/mozaika-1600.webp 1600w, img/mozaika-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 45vw" decoding="async" alt="Usta qo‘lda mozaika termoqda" loading="lazy"></figure>
@@ -439,6 +527,7 @@
     </div>
     <p class="hv-foot__mark" aria-hidden="true" data-reveal>HALVET</p>
     <p class="hv-foot__legal">© <span data-year>2026</span> Halvet</p>
+    <p class="hv-foot__credit">Kayfiyat videolari: L R.J. va Curtis Adams (Pexels), highwayvideography (Mixkit)</p>
   </div>
 </footer>
 
@@ -449,6 +538,7 @@
 <script src="steam.js" defer></script>
 <script src="girih.js" defer></script>
 <script src="mosaic.js" defer></script>
+<script src="iot.js" defer></script>
 <script src="fog.js" defer></script>
 <script src="blueprints.js"></script>
 <script src="systems.js" defer></script>
