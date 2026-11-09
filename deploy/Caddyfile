@@ -1,0 +1,31 @@
+{
+	admin off
+	auto_https off
+}
+
+:80 {
+	root * /srv
+	encode zstd gzip
+
+	@img path /img/*
+	header @img Cache-Control "public, max-age=604800"
+
+	@code path /styles.css /app.js /blueprints.js
+	header @code Cache-Control "public, max-age=3600"
+
+	@html path / /index.html /version.txt
+	header @html Cache-Control "no-cache"
+
+	header {
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self' mailto:"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+		Cross-Origin-Opener-Policy same-origin
+		-Server
+	}
+
+	file_server
+
+	handle_errors 404 {
+		redir * / 302
+	}
+}
