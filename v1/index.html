@@ -7,6 +7,10 @@
 <meta name="description" content="Halvet shaxsiy turk hammomi, sauna va basseynlarni loyihadan topshirishgacha quradi: qurilish, nasos va filtratsiya, isitish, elektrika, santexnika va mozaika bitta oila qo‘lida.">
 <meta name="theme-color" content="#0d1113">
 <link rel="canonical" href="https://halvet.dtwin.uz/">
+<link rel="alternate" hreflang="uz" href="https://halvet.dtwin.uz/">
+<link rel="alternate" hreflang="ru" href="https://halvet.dtwin.uz/ru">
+<link rel="alternate" hreflang="en" href="https://halvet.dtwin.uz/en">
+<link rel="alternate" hreflang="x-default" href="https://halvet.dtwin.uz/">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://halvet.dtwin.uz/">
@@ -33,7 +37,7 @@
     </nav>
     <a class="hv-mark" href="#top" aria-label="Halvet, bosh sahifa">HALVET</a>
     <div class="hv-nav__end">
-      <span class="hv-lang" aria-label="Til">UZ</span>
+      <nav class="hv-lang" aria-label="Til"><a class="hv-lang__a" href="/" hreflang="uz" lang="uz" aria-current="true">UZ</a><a class="hv-lang__a" href="/ru" hreflang="ru" lang="ru">RU</a><a class="hv-lang__a" href="/en" hreflang="en" lang="en">EN</a></nav>
       <a class="hv-btn hv-btn--line" href="#aloqa">Konsultatsiya</a>
     </div>
     <button class="hv-burger" aria-label="Menyu" aria-expanded="false" data-burger><span></span><span></span></button>
@@ -43,7 +47,7 @@
 <main id="top">
 
 <section class="hv-hero" aria-labelledby="hero-h">
-  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom2-1448.webp" srcset="img/hammom2-640.webp 640w, img/hammom2-1024.webp 1024w, img/hammom2-1448.webp 1448w" sizes="100vw" decoding="async" alt="" fetchpriority="high"></div>
+  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom2-1448.webp" srcset="img/hammom2-640.webp 640w, img/hammom2-1024.webp 1024w, img/hammom2-1448.webp 1448w" sizes="100vw" decoding="async" alt="" fetchpriority="high"><canvas class="hv-hero__vapor" data-vapor></canvas></div>
   <div class="hv-hero__glow" aria-hidden="true" data-glow></div>
   <canvas class="hv-hero__steam" data-steam aria-hidden="true"></canvas>
   <canvas class="hv-hero__puffs" data-puffs aria-hidden="true"></canvas>
@@ -237,23 +241,34 @@
 
     <div class="hv-eq" data-eq>
       <div class="hv-head hv-head--dark hv-eq__head" data-reveal>
-        <p class="hv-eyebrow">Texnik xona · 3D</p>
-        <h3 class="hv-eq__h">Suv yo‘li: basseyndan qurilmalar orqali qaytib</h3>
+        <p class="hv-eyebrow">HV-01 · Prinsipial sxema · 3D</p>
+        <h3 class="hv-eq__h">Nasos va filtratsiya: suvning to‘liq aylanishi</h3>
       </div>
       <div class="hv-eq__stage" data-eq-stage>
         <ul class="hv-eq__legend" aria-label="Quvur ranglari">
-          <li class="f-cold">Filtratsiya</li><li class="f-ret">Qaytish</li><li class="f-hot">Issiq suv</li><li class="f-chem">Dozalash</li><li class="f-drain">Drenaj</li>
+          <li class="f-cold">Filtratsiya</li><li class="f-ret">Qaytish</li><li class="f-chem">Dozalash</li><li class="f-drain">Drenaj</li><li class="f-hot">Issiq suv</li>
         </ul>
+        <ol class="hv-eq__tags" data-eq-tags aria-hidden="true">
+          <li data-tag="1"><i>1</i><span>Skimmer</span></li>
+          <li data-tag="2"><i>2</i><span>Tub drenaji</span></li>
+          <li data-tag="3"><i>3</i><span>Nasos va prefiltr</span></li>
+          <li data-tag="4"><i>4</i><span>Qum filtri</span></li>
+          <li data-tag="5"><i>5</i><span>Issiqlik almashtirgich</span></li>
+          <li data-tag="6"><i>6</i><span>Dozalash</span></li>
+          <li data-tag="7"><i>7</i><span>Qaytish forsunkalari</span></li>
+          <li data-tag="8"><i>8</i><span>Suv osti yoritish</span></li>
+        </ol>
         <div class="hv-eq__hud">
           <ol class="hv-eq__steps">
-            <li data-st="0"><b>Umumiy ko‘rinish</b><small>Basseyn suvi kuniga bir necha marta shu xonadan aylanib o‘tadi.</small></li>
-            <li data-st="1"><b>Skimmer va tub drenaji</b><small>Sirtdagi barg va yog‘ni yig‘adi; so‘rish liniyasi boshlanadi.</small><em>Ø 50–63 mm PVC</em></li>
-            <li data-st="2"><b>Prefiltr va nasos</b><small>Savat yirik axlatni ushlaydi, nasos suvni tizim bo‘ylab haydaydi.</small><em>Chastota o‘zgartirgich — jim va tejamkor</em></li>
-            <li data-st="3"><b>Qum filtri</b><small>Mayda zarrachalar qumda qoladi; 6 yo‘lli klapan bilan teskari yuviladi.</small><em>Manometr — yuvish vaqtini ko‘rsatadi</em></li>
-            <li data-st="4"><b>Issiqlik almashtirgich</b><small>Qozon halqasi issiqligini basseyn suviga beradi, suvlar aralashmaydi.</small><em>Plastinali, zanglamas</em></li>
-            <li data-st="5"><b>UV va dozalash</b><small>UV mikroblarni zararsizlantiradi; nasoslar pH va xlorni me‘yorda ushlaydi.</small><em>Qaytish liniyasiga in‘eksiya</em></li>
-            <li data-st="6"><b>Boshqaruv shiti</b><small>Nasos, isitish, dozalash va yoritish bitta shitdan boshqariladi.</small><em>Avtomat, RCD, taymerlar</em></li>
-            <li data-st="7"><b>Basseynga qaytish</b><small>Toza, iliq suv forsunkalar orqali kosaga bir tekis qaytadi.</small></li>
+            <li data-st="0"><b>Umumiy ko‘rinish</b><small>Basseyn suvi sutkasiga bir necha marta shu yo‘ldan aylanib o‘tadi: kosadan qurilmalarga va yana kosaga.</small></li>
+            <li data-st="1"><b>Skimmer</b><small>Sirtdagi barg, chang va yog‘ni yig‘adi — so‘rish liniyasi shu yerdan boshlanadi.</small><em>Ø 50–63 mm PVC</em></li>
+            <li data-st="2"><b>Tub drenaji</b><small>Pastdagi suvni so‘radi va kosa bo‘ylab aylanma oqim beradi, turg‘un zona qolmaydi.</small><em>Xavfsiz panjara, hisoblangan tezlik</em></li>
+            <li data-st="3"><b>Nasos va prefiltr</b><small>Savat yirik chiqindini ushlaydi, nasos suvni butun tizim bo‘ylab haydaydi.</small><em>Chastota o‘zgartirgich — jim va tejamkor</em></li>
+            <li data-st="4"><b>Qum filtri</b><small>Suv qum qatlamidan yuqoridan pastga o‘tadi, mayda zarrachalar qumda qoladi. Bosim oshsa — teskari yuviladi.</small><em>6 yo‘lli klapan va manometr</em></li>
+            <li data-st="5"><b>Issiqlik almashtirgich</b><small>Qozon issig‘ini basseyn suviga beradi, ikki suv aralashmaydi. Suv yil bo‘yi 26–28 °C.</small><em>Zanglamas, plastinali yoki quvurli</em></li>
+            <li data-st="6"><b>Dozalash</b><small>Datchiklar pH va xlorni o‘lchaydi, nasoslar me’yorgacha mikrodozada qo‘shadi.</small><em>pH 7,2–7,6 · xlor 1–3 mg/l</em></li>
+            <li data-st="7"><b>Qaytish forsunkalari</b><small>Toza, iliq suv kosaga bir tekis qaytadi; forsunkalar joylashuvi “o‘lik” zonalarni yo‘qotadi.</small></li>
+            <li data-st="8"><b>Suv osti yoritish</b><small>LED chiroqlar xavfsiz past kuchlanishda ishlaydi — kechqurun basseyn ichidan yonadi.</small><em>12 V, IP68</em></li>
           </ol>
         </div>
       </div>
@@ -575,6 +590,7 @@
 <script src="mosaic.js" defer></script>
 <script src="iot.js" defer></script>
 <script src="fog.js" defer></script>
+<script src="vapor.js" defer></script>
 <script src="blueprints.js"></script>
 <script src="systems.js" defer></script>
 <script src="app.js" defer></script>

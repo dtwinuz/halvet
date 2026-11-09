@@ -91,7 +91,21 @@
   }
   /* hero tumani: avval WebGL shader (jonli, sichqonchaga javob beradi), bo'lmasa 2D bug' */
   var fogCanvas = $('[data-fog]'), fog = null;
+  var vaporCanvas = $('[data-vapor]'), heroImg = $('.hv-hero__media img');
   var startFog = function () {
+    // eng avval: GPU suyuqlik simulyatsiyasi (haqiqiy bug' + issiq havo sinishi); bo'lmasa — eski tuman shaderi
+    if (vaporCanvas && window.HVVapor && heroImg && !saveData) {
+      try {
+        // simulyatsiya bosqichma-bosqich isiydi; tayyor bo'lguncha CSS bug'i ko'rinib turadi
+        fog = window.HVVapor(vaporCanvas, hero, heroImg, {
+          still: reduce,
+          onReady: function () { hero.classList.add('is-vapor', 'is-gl'); onScroll(); },
+          onLost: function () { hero.classList.remove('is-vapor'); fog = null; if (vaporCanvas) vaporCanvas.remove(); vaporCanvas = null; startFog(); startPuffs(); }
+        }) || null;
+      } catch (e) { fog = null; }
+      if (fog) { onScroll(); return; }
+      vaporCanvas.remove(); vaporCanvas = null;
+    }
     if (fogCanvas && window.HVFog) {
       try { fog = window.HVFog(fogCanvas, hero, { still: reduce, onLost: function () { hero.classList.remove('is-gl'); if (startSteam && !reduce) startSteam(); } }); } catch (e) { fog = null; }
     }
@@ -105,7 +119,7 @@
     if (!puffCanvas || !window.HVPuffs || saveData) return;
     try { puffs = window.HVPuffs(puffCanvas, hero, { still: reduce, src: 'img/steam.webp' }) || null; } catch (e) { puffs = null; }
   };
-  var laterFog = function () { setTimeout(function () { startFog(); startPuffs(); }, 250); };
+  var laterFog = function () { setTimeout(function () { startFog(); if (!vaporCanvas) startPuffs(); }, 250); };
   if (document.readyState === 'complete') laterFog(); else window.addEventListener('load', laterFog);
 
   /* hero: 3D chuqurlik — rasm, tuman va matn sichqonchaga turli masofada javob beradi; scroll = hammom ichiga kirish */
@@ -286,7 +300,7 @@
   }
 
   /* pin qilingan 3D sahna: sticky stage + scroll progress + lazy modul */
-  var pinned3d = function (track, stage, mod, fn, onP, onFail) {
+  var pinned3d = function (track, stage, mod, fn, onP, onFail, extra) {
     var h3 = null;
     scrollFx.push(function (vh) {
       var r = track.getBoundingClientRect(), prev = stage.previousElementSibling;
@@ -299,7 +313,7 @@
     new IntersectionObserver(function (e, o) {
       if (!e[0].isIntersecting) return;
       o.disconnect();
-      import('./' + mod + (VER ? '?v=' + VER : '')).then(function (m) { return m[fn](stage, { reduce: reduce, onLost: onFail }); })
+      import('./' + mod + (VER ? '?v=' + VER : '')).then(function (m) { var o = { reduce: reduce, onLost: onFail }; for (var k in extra) o[k] = extra[k]; return m[fn](stage, o); })
         .then(function (h) { h3 = h; onScroll(); }).catch(onFail);
     }, { rootMargin: '900px 0px' }).observe(track);
   };
@@ -327,7 +341,15 @@
       pinned3d(eq, eqStage, 'equip3d.js', 'mountEquip', function (p) {
         var cur = Math.round(p * (sts.length - 1));
         sts.forEach(function (li, i) { li.classList.toggle('is-on', i === cur); li.classList.toggle('is-done', i < cur); });
-      }, function () { eq.classList.remove('is-3d'); });
+      }, function () { eq.classList.remove('is-3d'); }, {
+        // yorliq bosilsa: o'sha qadamning scroll nuqtasiga
+        onPick: function (n) {
+          var r = eq.getBoundingClientRect(), prev = eqStage.previousElementSibling, vh = window.innerHeight;
+          var off = prev ? prev.getBoundingClientRect().bottom - r.top : 0;
+          var y = window.scrollY + r.top + off + (n / (sts.length - 1)) * Math.max(1, r.height - off - vh) + 2;
+          if (typeof lenis !== 'undefined' && lenis) lenis.scrollTo(y, { duration: 1.4 }); else window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
     }
   }
 

@@ -6,3 +6,10 @@ v1/shots/
 v1/img/src/
 
 media-src/
+
+# i18n: tools/i18n.mjs build natijasi (deploy.sh har safar qayta yig'adi)
+v1/index.ru.html
+v1/index.en.html
+v1/*.ru.js
+v1/*.en.js
+i18n/*.missing.json
