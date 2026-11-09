@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dunyo namunalari — Halvet uchun</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#f3eee6; --ink:#14191b; --muted:#5a5f5c; --line:#d6cdbf; --deep:#0a1315; --cu:#a8461f; --card:#fff; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:400 16px/1.6 Manrope, system-ui, sans-serif; }
+h1,h2,h3 { font-family:Fraunces, Georgia, serif; font-weight:400; letter-spacing:-.02em; margin:0; }
+a { color:inherit; }
+.wrap { width:min(100% - 32px, 1240px); margin-inline:auto; }
+header { background:var(--deep); color:#eef1ee; padding:72px 0 64px; }
+header .k { color:#e9c9a6; font-size:14px; margin-bottom:16px; }
+header h1 { font-size:clamp(36px,5vw,68px); line-height:1.05; font-weight:300; max-width:16ch; }
+header p { color:#a7b3b0; max-width:62ch; margin:22px 0 0; font-size:18px; }
+.keys { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,.1); margin-top:48px; border-radius:14px; overflow:hidden; }
+.keys div { background:#0f1f20; padding:22px; }
+.keys b { display:block; font:400 22px/1.2 Fraunces, serif; color:#fff; margin-bottom:8px; }
+.keys span { color:#a7b3b0; font-size:14px; }
+.filters { display:flex; gap:8px; flex-wrap:wrap; margin:48px 0 28px; }
+.filters button { border:1px solid var(--line); background:#fff; border-radius:999px; padding:9px 16px; font:500 14px Manrope; cursor:pointer; transition:transform .18s; }
+.filters button:hover { transform:translateY(-2px); }
+.filters button.on { background:var(--ink); color:#fff; border-color:var(--ink); }
+.grid { display:grid; grid-template-columns:repeat(2,1fr); gap:28px; padding-bottom:80px; }
+.card { background:var(--card); border-radius:18px; overflow:hidden; border:1px solid var(--line); display:flex; flex-direction:column; transition:transform .2s, box-shadow .2s; }
+.card:hover { transform:translateY(-3px); box-shadow:0 24px 50px -30px rgba(20,25,27,.45); }
+.shot { position:relative; aspect-ratio:16/10; background:#e8e0d3; overflow:hidden; cursor:zoom-in; border:0; padding:0; width:100%; display:block; }
+.shot img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .5s; display:block; }
+.card:hover .shot img { transform:scale(1.025); }
+.shot .rank { position:absolute; left:14px; top:14px; background:rgba(10,19,21,.85); color:#fff; font:400 15px Fraunces; padding:6px 12px; border-radius:999px; }
+.shot .open { position:absolute; right:14px; bottom:14px; background:#fff; color:var(--ink); font:600 13px Manrope; padding:8px 14px; border-radius:999px; box-shadow:0 6px 20px rgba(0,0,0,.25); }
+.shot.miss { display:grid; place-items:center; cursor:default; color:var(--muted); font-size:14px; }
+.body { padding:24px 26px 26px; display:flex; flex-direction:column; gap:14px; flex:1; }
+.top { display:flex; justify-content:space-between; gap:12px; align-items:baseline; flex-wrap:wrap; }
+.top h3 { font-size:28px; }
+.meta { font-size:13px; color:var(--muted); }
+.tags { display:flex; gap:6px; flex-wrap:wrap; }
+.tags span { font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px; background:#f1ebe1; }
+.tags .aw { background:#fbe7d8; color:#8a3a19; }
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.cols h4 { margin:0 0 6px; font-size:12px; letter-spacing:.04em; color:var(--muted); font-weight:600; }
+.cols ul { margin:0; padding-left:18px; font-size:15px; }
+.cols li { margin-bottom:4px; }
+.take { background:#0f1f20; color:#e6ece9; border-radius:12px; padding:16px 18px; font-size:15px; }
+.take b { color:#f0b27f; font-weight:600; }
+.links { display:flex; gap:18px; margin-top:auto; font-size:14px; font-weight:600; }
+.links a { color:var(--cu); text-decoration:none; }
+.links a:hover { text-decoration:underline; }
+.recs { background:#fff; border-top:1px solid var(--line); padding:72px 0 90px; }
+.recs h2 { font-size:clamp(30px,3.6vw,48px); max-width:20ch; }
+.recs ol { margin:36px 0 0; padding:0; list-style:none; counter-reset:r; display:grid; grid-template-columns:repeat(2,1fr); gap:0 48px; }
+.recs li { counter-increment:r; padding:20px 0 20px 52px; border-top:1px solid var(--line); position:relative; }
+.recs li::before { content:counter(r,decimal-leading-zero); position:absolute; left:0; top:20px; font:400 17px Fraunces; color:var(--cu); }
+.recs li b { display:block; font:400 21px/1.3 Fraunces; margin-bottom:4px; }
+.recs li span { color:var(--muted); font-size:15px; }
+/* viewer */
+.viewer { position:fixed; inset:0; background:rgba(10,19,21,.92); z-index:50; display:none; flex-direction:column; }
+.viewer.on { display:flex; }
+.vbar { display:flex; align-items:center; gap:12px; padding:12px 16px; color:#fff; }
+.vbar h3 { font-size:22px; margin-right:auto; }
+.vbar button, .vbar a { background:rgba(255,255,255,.1); color:#fff; border:0; border-radius:999px; padding:9px 16px; font:600 14px Manrope; cursor:pointer; text-decoration:none; }
+.vbar button.on { background:#fff; color:var(--ink); }
+.frame { flex:1; overflow:auto; display:flex; justify-content:center; padding:0 16px 24px; }
+.browser { background:#fff; border-radius:12px 12px 0 0; overflow:hidden; height:max-content; box-shadow:0 30px 80px rgba(0,0,0,.5); }
+.browser .chrome { background:#e9e6e1; padding:10px 14px; display:flex; gap:6px; align-items:center; font-size:12px; color:#555; position:sticky; top:0; }
+.browser .chrome i { width:11px; height:11px; border-radius:50%; background:#d5cfc6; display:inline-block; }
+.browser .chrome em { font-style:normal; margin-left:12px; background:#fff; border-radius:6px; padding:3px 12px; }
+.browser img { display:block; width:100%; }
+.browser.desk { width:min(1240px,100%); }
+.browser.phone { width:390px; border-radius:28px 28px 0 0; }
+@media (max-width:900px) { .grid,.recs ol,.cols { grid-template-columns:1fr; } .keys { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <p class="k">Halvet · dunyo tadqiqoti · 2026-11-09</p>
+    <h1>Hammom, sauna va basseyn sohasidagi dunyo namunalari</h1>
+    <p>5 yo'nalishda 30 ga yaqin kompaniya o'rganildi: hammom, sauna, basseyn, wellness quruvchilar va mukofot olgan saytlar. Quyida Halvet uchun eng foydali 13 tasi. Rasmga bosing: saytni to'liq, kompyuter va telefon ko'rinishida, ichkariga scroll qilib ko'rasiz.</p>
+    <div class="keys">
+      <div><b>Mukofot kam</b><span>Bu sohada Awwwards'da faqat 2 ta sauna sayti bor (Leil, Heritage). Hammom va basseyn quruvchilarda bitta ham "Site of the Day" yo'q.</span></div>
+      <div><b>Yetakchilar nosoz</b><span>Juno Spa domeni sotuvda, Promet SSL eskirgan, KLAFS redirect halqasida. Benuqson sayt o'zi ustunlik.</span></div>
+      <div><b>Hech kim ko'rsatmaydi</b><span>Muhandislik kesimi, qurilish jarayoni, 360° tur, oldin/keyin. Bu bo'sh joy Halvetniki.</span></div>
+      <div><b>O'zbekistonda raqib yo'q</b><span>Bozor OLX va Telegramda. Uch tilli premium sayt darhol birinchi o'ringa chiqadi.</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="filters" data-filters>
+    <button class="on" data-f="all">Hammasi</button>
+    <button data-f="sauna">Sauna</button>
+    <button data-f="hammom">Hammom</button>
+    <button data-f="basseyn">Basseyn va mozaika</button>
+    <button data-f="wow">"Vau" namunalari</button>
+  </div>
+  <div class="grid" data-grid></div>
+</main>
+
+<section class="recs">
+  <div class="wrap">
+    <h2>Halvet uchun xulosa: nimani olamiz</h2>
+    <ol>
+      <li><b>Hero: haqiqiy loyihadan sekin kino-kadr</b><span>Heritage va Leil kabi: bitta qisqa satr, ostida bug', gumbaz nuri, suv. Ovozsiz, sekin.</span></li>
+      <li><b>Professional foto va dron video</b><span>Mukofotlar fotografiyaga berilgan. Stok rasm yo'q, faqat o'z ishlari.</span></li>
+      <li><b>Har loyiha alohida hikoya</b><span>Barr + Wray va KLAFS kabi: shahar, yil, m², muddat, materiallar, oldin → qurilish → keyin.</span></li>
+      <li><b>Ochiq texnik raqamlar</b><span>Sauna Dekor kabi: göbek taşı harorati, qurilish muddati, kafolat yillari.</span></li>
+      <li><b>Muhandislik kesimi</b><span>Dunyoda hech kimda yo'q. Nasos → filtr → isitgich, bug' generatori. Halvetning imzosi.</span></li>
+      <li><b>Bitta yengil planner va mozaika preview</b><span>Castiglione va Ezarri kabi. Oxiri Telegram/WhatsApp xabariga aylanadi.</span></li>
+      <li><b>Rang: marmar, mis, bug' kulrangi, koshin ko'ki</b><span>To'q yashil + krem wellness g'oliblarida klishe bo'lib qolgan.</span></li>
+      <li><b>Harakatda me'yor</b><span>Sokin parallaks, bitta imzo effekt. To'liq 3D dunyo emas: qimmat va telefonda og'ir.</span></li>
+      <li><b>O'zbek, rus, ingliz tillari</b><span>KLAFS, Antonovich, HFC rus tilini beradi. Premium mijoz va mehmonxonalar uchun ingliz tili ham kerak.</span></li>
+      <li><b>Benuqson ijro</b><span>Bitta imlo xatosi yoki shablon qoldig'i premium mijozni yo'qotadi. Har piksel tekshiriladi.</span></li>
+    </ol>
+  </div>
+</section>
+
+<div class="viewer" data-viewer>
+  <div class="vbar">
+    <h3 data-vtitle></h3>
+    <button class="on" data-mode="1440">Kompyuter</button>
+    <button data-mode="390">Telefon</button>
+    <a data-vlink target="_blank" rel="noopener">Saytni ochish ↗</a>
+    <button data-close>Yopish ✕</button>
+  </div>
+  <div class="frame"><div class="browser desk" data-browser><div class="chrome"><i></i><i></i><i></i><em data-vurl></em></div><img data-vimg alt=""></div></div>
+</div>
+
+<script src="shots/list.js"></script>
+<script>
+const SITES = [
+  { id:'heritage', rank:1, f:['sauna'], name:'Heritage Saunas', where:'Yangi Zelandiya', url:'https://heritagesaunas.co.nz/', award:'Awwwards Nominee 2026',
+    tech:'Webflow', good:['9 bosqichli scroll-hikoya: hunar → materiallar → marosim → o‘lcham → loyihalar','Ulkan serif sarlavha kino-kadr ustida','"Enquire" tugmasi doim ko‘rinib turadi'],
+    weak:['Konfigurator matnli tekshiruvda ko‘rinmadi'], take:'Oilaviy usta-quruvchining eng to‘g‘ri modeli. Sahifa tuzilishini shundan olamiz.' },
+  { id:'leil', rank:2, f:['sauna'], name:'Leil Saunas', where:'Estoniya', url:'https://leilsaunas.com/', award:'Awwwards Honorable Mention 2026',
+    tech:'WordPress, häk agency', good:['Video hero: tomdan tomchi, o‘rmon','Qisqa satr: "A mindful pause"','Sokin, hashamatli ritm'],
+    weak:['Yashil + krem palitra wellness’da klishe','Cookie oynasi hero’ni yopib qo‘yadi'], take:'Sokin hashamat va video kadr sifati. Rangini emas, kayfiyatini olamiz.' },
+  { id:'saunadekor', rank:3, f:['hammom'], name:'Sauna Dekor', where:'Istanbul, Turkiya', url:'https://saunadekor.com/', award:'Eng kuchli hammom kontenti',
+    tech:'WordPress', good:['Temperatura narvoni: har xona turi o‘z sahifasiga','Ochiq raqamlar: 40–50 °C, 3–8 hafta, kafolat','4 bosqichli jarayon, xarita, WhatsApp'],
+    weak:['Kalit so‘z bilan to‘ldirilgan sarlavhalar','Ismsiz sharhlar, bir-biriga zid raqamlar'], take:'Halvetning to‘g‘ridan-to‘g‘ri raqibi. Kontenti va ochiqligini olamiz, SEO-ortiqchaligini emas.' },
+  { id:'barrwray', rank:4, f:['hammom','basseyn'], name:'Barr + Wray', where:'Glazgo / BAA', url:'https://barrandwray.com/', award:'Four Seasons, Ritz-Carlton portfeli',
+    tech:'WordPress', good:['~80 nomli mehmonxona loyihasi, joylashuv bilan','Isbot birinchi o‘rinda','Bitta CTA: texnik jamoa bilan qo‘ng‘iroq'],
+    weak:['Faqat ingliz tilida','Hammom alohida ko‘rsatilmaydi'], take:'Loyiha kartalari tizimi: nom, joy, qamrov. Premium mijoz isbotga ishonadi.' },
+  { id:'klafs', rank:5, f:['sauna','hammom'], name:'KLAFS', where:'Germaniya', url:'https://klafs.com/residential/planning', award:'Premium nemis brendi',
+    tech:'TYPO3', good:['"Planning" bo‘limi va sauna finder so‘rovnomasi','Xususiy loyihalar kutubxonasi','Porsche, Gesa Hansen bilan dizayn hamkorligi'],
+    weak:['Geo-redirect halqasi (klafs.kz ga yuboradi)'], take:'Mijozni "rejalashtirish" orqali olib borish. KLAFS mintaqaga rus tilida kirib kelmoqda.' },
+  { id:'castiglione', rank:6, f:['basseyn'], name:'Piscine Castiglione', where:'Italiya', url:'https://www.piscinecastiglione.it/', award:'70+ mamlakat',
+    tech:'—', good:['"Orzuingizdagi basseyn" 6 yo‘lli tanlagich','Konfigurator: uslub → filtr → rang → qoplama','E-kitob evaziga kontakt, shourum bandlovi'],
+    weak:['Asosan italyancha'], take:'Basseyn + sauna + bug‘ bitta joyda, xuddi Halvetdagidek. Planner g‘oyasi shu yerdan.' },
+  { id:'ezarri', rank:7, f:['basseyn'], name:'Ezarri — mozaika konfiguratori', where:'Ispaniya', url:'https://www.ezarri.com/en/configurator', award:'Mozaika simulyatori',
+    tech:'—', good:['4 tagacha mozaika va chok rangi aralashtiriladi','Suv osti rangi simulyatsiyasi','Natija smeta so‘roviga aylanadi'],
+    weak:['Mahsulot brendi, quruvchi emas'], take:'Halvetning mozaika ishi uchun to‘g‘ridan-to‘g‘ri namuna.' },
+  { id:'guncast', rank:8, f:['basseyn'], name:'Guncast', where:'Buyuk Britaniya', url:'https://www.guncast.com/', award:'Luks basseyn + KLAFS wellness',
+    tech:'—', good:['Intro film','5 ta kirish plitkasi','Arxitektorlar zonasi, bosma katalog, aftercare'],
+    weak:['—'], take:'Arxitektorlar uchun bo‘lim va servis sahifasi g‘oyasi.' },
+  { id:'laguna', rank:9, f:['basseyn'], name:'Laguna Pools', where:'Melburn, Avstraliya', url:'https://www.lagunapools.com.au/', award:'SPASA 2025: eng yaxshi beton basseyn quruvchi',
+    tech:'WordPress', good:['Jonli qurilish kundaligi','O‘lchamli loyiha kartalari','Ikki bosqichli brif formasi (reja yuklash bilan)'],
+    weak:['Yangiliklar lentasida xato'], take:'Qurilish jarayonini ko‘rsatish — ishonchning eng kuchli dalili.' },
+  { id:'effe', rank:10, f:['hammom','sauna'], name:'Effe', where:'Italiya', url:'https://www.effe.it/en-us/', award:'6 til, dizayner kolleksiyalari',
+    tech:'WordPress + WPML', good:['Bug‘ generatori o‘lchamini hisoblash vositasi','Hammom bo‘yicha PDF qo‘llanmalar (lead magnit)','Dizayner nomi bilan hikoya'],
+    weak:['Modul hammom sotadi, qurmaydi'], take:'"Uyda hammom qanday rejalashtiriladi" PDF qo‘llanmasi g‘oyasi.' },
+  { id:'antara', rank:11, f:['wow'], name:'Antara Spa Wellness', where:'—', url:'https://antaraspawellness.com', award:'Awwwards Honorable Mention 2025',
+    tech:'—', good:['Parallaks va sahifa o‘tishlari','Sekin ritm','Storytelling'],
+    weak:['Yashil/krem klishe'], take:'Harakatda me‘yor namunasi: animatsiya bor, lekin "o‘yinchoq" emas.' },
+  { id:'vita', rank:12, f:['wow'], name:'Vita Architecture', where:'Buyuk Britaniya', url:'https://vitaarchitecture.com', award:'Awwwards + FWA + CSSDA Site of the Day',
+    tech:'WebGL shader, video', good:['Uch platformada kun sayti','Bounce 50% kamaygan','Sessiya 30 s → 2 daq 30 s'],
+    weak:['Qimmat, o‘rtacha telefonda og‘ir'], take:'"Vau"ning yuqori chegarasi. Undan bitta imzo effekt olinadi, butun sayt emas.' },
+  { id:'primland', rank:13, f:['wow'], name:'Explore Primland', where:'AQSh, kurort', url:'https://explore.ownprimland.com', award:'Awwwards Site of the Day 2026',
+    tech:'Three.js', good:['Haqiqiy relyef, tuman','Scroll bilan boshqariladigan kamera parvozi'],
+    weak:['Lead emas, taassurot uchun'], take:'Bug‘/tuman effekti uchun ilhom: scroll bilan bug‘ tarqalib gumbaz ochiladi.' }
+];
+
+const grid = document.querySelector('[data-grid]');
+const exists = new Set(window.SHOTS || []);
+grid.innerHTML = SITES.map(s => {
+  const desk = exists.has(s.id + '-1440'), has = desk || exists.has(s.id + '-390');
+  return `<article class="card" data-tags="${s.f.join(' ')}">
+    ${has ? `<button class="shot" data-open="${s.id}" aria-label="${s.name} saytini ko‘rish"><img src="shots/${desk ? s.id + '-hero' : s.id + '-390'}.jpg" alt="" loading="lazy"><span class="rank">#${s.rank}</span><span class="open">To‘liq ko‘rish</span></button>`
+          : `<div class="shot miss"><span class="rank">#${s.rank}</span>Skrinshot olinmadi — saytni oching</div>`}
+    <div class="body">
+      <div class="top"><h3>${s.name}</h3><span class="meta">${s.where} · ${s.tech}</span></div>
+      <div class="tags"><span class="aw">${s.award}</span></div>
+      <div class="cols">
+        <div><h4>KUCHLI TOMONI</h4><ul>${s.good.map(g => `<li>${g}</li>`).join('')}</ul></div>
+        <div><h4>KAMCHILIGI</h4><ul>${s.weak.map(g => `<li>${g}</li>`).join('')}</ul></div>
+      </div>
+      <p class="take"><b>Halvet uchun:</b> ${s.take}</p>
+      <div class="links"><a href="${s.url}" target="_blank" rel="noopener">Saytni ochish ↗</a></div>
+    </div>
+  </article>`;
+}).join('');
+
+document.querySelector('[data-filters]').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('[data-filters] button').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('.card').forEach(c => c.hidden = b.dataset.f !== 'all' && !c.dataset.tags.includes(b.dataset.f));
+});
+
+const v = document.querySelector('[data-viewer]'), vimg = document.querySelector('[data-vimg]'), br = document.querySelector('[data-browser]');
+let cur;
+function show(mode) {
+  const ok = exists.has(cur.id + '-' + mode);
+  document.querySelectorAll('[data-mode]').forEach(b => { b.classList.toggle('on', b.dataset.mode === mode); b.disabled = !exists.has(cur.id + '-' + b.dataset.mode); });
+  if (!ok) return;
+  br.className = 'browser ' + (mode === '390' ? 'phone' : 'desk');
+  vimg.src = `shots/${cur.id}-${mode}.jpg`;
+  document.querySelector('.frame').scrollTop = 0;
+}
+grid.addEventListener('click', e => {
+  const b = e.target.closest('[data-open]'); if (!b) return;
+  cur = SITES.find(s => s.id === b.dataset.open);
+  document.querySelector('[data-vtitle]').textContent = `#${cur.rank} ${cur.name}`;
+  document.querySelector('[data-vurl]').textContent = cur.url.replace(/^https?:\/\//, '');
+  document.querySelector('[data-vlink]').href = cur.url;
+  v.classList.add('on'); document.body.style.overflow = 'hidden'; show(exists.has(cur.id + '-1440') ? '1440' : '390');
+});
+document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => show(b.dataset.mode)));
+const close = () => { v.classList.remove('on'); document.body.style.overflow = ''; };
+document.querySelector('[data-close]').addEventListener('click', close);
+addEventListener('keydown', e => e.key === 'Escape' && close());
+</script>
+</body>
+</html>

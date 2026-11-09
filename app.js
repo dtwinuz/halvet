@@ -367,7 +367,7 @@
         `Ism: ${f.get('ism')}`, `Telefon: ${f.get('tel')}`, `Kerak: ${f.getAll('tur').join(', ') || '-'}`,
         `Joy: ${f.get('joy') || '-'}`, `Maydon: ${f.get('maydon') || '-'} m2`, `Izoh: ${f.get('izoh') || '-'}`
       ].join('\n');
-      location.href = `mailto:ariza@gumbazsoz.example?subject=${encodeURIComponent('Smeta so‘rovi')}&body=${encodeURIComponent(body)}`;
+      location.href = `mailto:ariza@halvet.example?subject=${encodeURIComponent('Smeta so‘rovi')}&body=${encodeURIComponent(body)}`;
       msg.style.color = ''; msg.textContent = 'Rahmat. Ariza tayyorlandi — tez orada bog‘lanamiz.';
     });
   }

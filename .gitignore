@@ -1,2 +1,4 @@
 shots/
 .taste-skill/
+gallery/shots/*.png
+gallery/*.log
