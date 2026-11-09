@@ -368,6 +368,32 @@
       } else if (loaded) v.pause();
     }, { rootMargin: '200px 0px', threshold: .15 }).observe(v);
   });
+  /* ilhom galereyasi: filtr + lightbox (dialog) */
+  var gal = $('[data-gal]');
+  if (gal) {
+    var gItems = $$('.hv-gal__item', gal), lb = $('[data-lb]', gal), lbImg = $('[data-lb-img]', gal), cur = 0;
+    $$('[data-f]', gal).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var f = b.getAttribute('data-f');
+        $$('[data-f]', gal).forEach(function (o) { var on = o === b; o.classList.toggle('is-on', on); o.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+        gItems.forEach(function (it) { it.hidden = !(f === 'all' || it.getAttribute('data-cat') === f); });
+      });
+    });
+    var vis = function () { return gItems.filter(function (it) { return !it.hidden; }); };
+    var open = function (it) {
+      var b = $('button', it), list = vis(); cur = list.indexOf(it);
+      lbImg.src = b.getAttribute('data-full'); lbImg.alt = $('img', it).alt;
+      $('[data-lb-alt]', gal).textContent = $('img', it).alt; $('[data-lb-credit]', gal).textContent = b.getAttribute('data-credit');
+      if (!lb.open) { if (lb.showModal) lb.showModal(); else lb.setAttribute('open', ''); }
+    };
+    var move = function (d) { var list = vis(); if (!list.length) return; cur = (cur + d + list.length) % list.length; open(list[cur]); };
+    gItems.forEach(function (it) { $('button', it).addEventListener('click', function () { open(it); }); });
+    $('[data-lb-close]', gal).addEventListener('click', function () { lb.close(); });
+    $('[data-lb-prev]', gal).addEventListener('click', function () { move(-1); });
+    $('[data-lb-next]', gal).addEventListener('click', function () { move(1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) { if (e.key === 'ArrowLeft') move(-1); if (e.key === 'ArrowRight') move(1); });
+  }
   /* aqlli boshqaruv konsepsiyasi: jonli namuna panel + Telegram mini-app */
   var iot = $('[data-iot]');
   if (iot && window.HVIot) { try { window.HVIot(iot, { still: reduce }); } catch (err) { /* statik namuna qoladi */ } }
