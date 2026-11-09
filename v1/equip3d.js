@@ -59,6 +59,10 @@ export async function mountEquip(stage, opts) {
   });
   add(new THREE.PlaneGeometry(7.6, 8.6), waterMat, -11, 1.41, -.5, -Math.PI / 2);
   add(new THREE.BoxGeometry(.5, .35, .7), M.panel, -6.9, 1.2, -2); // skimmer qopqog'i
+  // suv osti yoritgichi va qaytish forsunkalari
+  add(new THREE.CircleGeometry(.22, 24), new THREE.MeshBasicMaterial({ color: 0xc9f6ff }), -6.99, .75, 2.6, 0, Math.PI / 2);
+  const poolLed = new THREE.PointLight(0x7fe6ff, 6, 6, 2); poolLed.position.set(-7.6, .9, 2.6); scene.add(poolLed);
+  [-.6, .4].forEach((dz) => add(cyl(.07, .25), M.steel, -6.95, 1.0, 1.3 + dz, 0, 0, Math.PI / 2));
 
   // nasos: prefiltr (shaffof) + korpus + dvigatel
   add(cyl(.38, .9), M.clear, 0, .75, -2);
@@ -111,7 +115,7 @@ export async function mountEquip(stage, opts) {
     const curve = new THREE.CatmullRomCurve3(pts.map((p) => new THREE.Vector3(...p)), false, 'catmullrom', .05);
     const len = curve.getLength();
     const geo = new THREE.TubeGeometry(curve, Math.max(24, Math.round(len * 10)), r, 14, false);
-    const col = { cold: 0x5fd7ee, hot: 0xff8a3c, chem: 0xf3d36b, ret: 0x8ef0ff }[kind];
+    const col = { cold: 0x3f7dff, hot: 0xff8a3c, chem: 0xffd34d, ret: 0x22f0dc, drain: 0xa86bff }[kind];
     const mat = new THREE.ShaderMaterial({
       uniforms: { uTime: { value: 0 }, uLen: { value: len }, uC: { value: new THREE.Color(col) }, uOn: { value: 0 } },
       vertexShader: 'varying vec2 vUv;varying vec3 vN;varying vec3 vV;void main(){vUv=uv;vN=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);vV=normalize(-mv.xyz);gl_Position=projectionMatrix*mv;}',
@@ -128,6 +132,7 @@ export async function mountEquip(stage, opts) {
     pipes.push({ m, mat, step });
   };
   pipe([[-6.9, 1.05, -2], [-5, 1.05, -2], [-4, .4, -2], [-.45, .4, -2]], .11, 'cold', 1);
+  pipe([[-7, .3, -.6], [-5.6, .3, -.6], [-4.4, .32, -1.5], [-3.7, .4, -1.98]], .09, 'drain', 1); // tub drenaji
   pipe([[0, 1.3, -2], [0, 1.75, -2], [1.5, 1.75, -2], [3, 1.75, -2]], .11, 'cold', 2);
   pipe([[4, 4.0, -2.5], [4, 4.3, -3.2], [5.6, 4.1, -3.2], [6.2, .55, -2.6], [7.3, .55, -2.4]], .1, 'cold', 3);
   pipe([[8.7, 1.35, -1.6], [9.5, 1.35, -1.6], [9.8, 1.2, -2], [10.25, 1.2, -2]], .1, 'ret', 4);

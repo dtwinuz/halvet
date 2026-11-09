@@ -18,7 +18,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" as="font" type="font/woff2" href="fonts/cormorantgaramond-normal-300-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/manrope-normal-400-latin.woff2" crossorigin>
-<link rel="preload" as="image" imagesrcset="img/hammom-640.webp 640w, img/hammom-1024.webp 1024w, img/hammom-1600.webp 1600w, img/hammom-2000.webp 2000w" imagesizes="100vw" fetchpriority="high">
+<link rel="preload" as="image" imagesrcset="img/hammom2-640.webp 640w, img/hammom2-1024.webp 1024w, img/hammom2-1448.webp 1448w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -43,9 +43,10 @@
 <main id="top">
 
 <section class="hv-hero" aria-labelledby="hero-h">
-  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom-1600.webp" srcset="img/hammom-640.webp 640w, img/hammom-1024.webp 1024w, img/hammom-1600.webp 1600w, img/hammom-2000.webp 2000w" sizes="100vw" decoding="async" alt="" fetchpriority="high"></div>
+  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom2-1448.webp" srcset="img/hammom2-640.webp 640w, img/hammom2-1024.webp 1024w, img/hammom2-1448.webp 1448w" sizes="100vw" decoding="async" alt="" fetchpriority="high"></div>
   <div class="hv-hero__glow" aria-hidden="true" data-glow></div>
   <canvas class="hv-hero__steam" data-steam aria-hidden="true"></canvas>
+  <canvas class="hv-hero__puffs" data-puffs aria-hidden="true"></canvas>
   <canvas class="hv-hero__fog" data-fog aria-hidden="true"></canvas>
   <div class="hv-hero__shade" aria-hidden="true"></div>
   <div class="hv-hero__rays" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -194,10 +195,13 @@
         <h3 class="hv-eq__h">Suv yo‘li: basseyndan qurilmalar orqali qaytib</h3>
       </div>
       <div class="hv-eq__stage" data-eq-stage>
+        <ul class="hv-eq__legend" aria-label="Quvur ranglari">
+          <li class="f-cold">Filtratsiya</li><li class="f-ret">Qaytish</li><li class="f-hot">Issiq suv</li><li class="f-chem">Dozalash</li><li class="f-drain">Drenaj</li>
+        </ul>
         <div class="hv-eq__hud">
           <ol class="hv-eq__steps">
             <li data-st="0"><b>Umumiy ko‘rinish</b><small>Basseyn suvi kuniga bir necha marta shu xonadan aylanib o‘tadi.</small></li>
-            <li data-st="1"><b>Skimmer</b><small>Sirtdagi barg va yog‘ni yig‘adi; so‘rish liniyasi boshlanadi.</small><em>Ø 50–63 mm PVC</em></li>
+            <li data-st="1"><b>Skimmer va tub drenaji</b><small>Sirtdagi barg va yog‘ni yig‘adi; so‘rish liniyasi boshlanadi.</small><em>Ø 50–63 mm PVC</em></li>
             <li data-st="2"><b>Prefiltr va nasos</b><small>Savat yirik axlatni ushlaydi, nasos suvni tizim bo‘ylab haydaydi.</small><em>Chastota o‘zgartirgich — jim va tejamkor</em></li>
             <li data-st="3"><b>Qum filtri</b><small>Mayda zarrachalar qumda qoladi; 6 yo‘lli klapan bilan teskari yuviladi.</small><em>Manometr — yuvish vaqtini ko‘rsatadi</em></li>
             <li data-st="4"><b>Issiqlik almashtirgich</b><small>Qozon halqasi issiqligini basseyn suviga beradi, suvlar aralashmaydi.</small><em>Plastinali, zanglamas</em></li>
@@ -262,6 +266,25 @@
         <li><b>Termo-yog‘och</b><span>Sauna devorlari va o‘rindiqlari</span></li>
         <li><b>Mis va latun</b><span>Jo‘mraklar, kosalar, armatura</span></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="hv-girih" id="naqsh" aria-labelledby="gh-h" data-girih>
+  <div class="hv-girih__stage">
+    <div class="hv-girih__field" data-girih-field aria-hidden="true"></div>
+    <div class="hv-girih__spot" aria-hidden="true"></div>
+    <div class="hv-wrap hv-girih__body">
+      <div class="hv-girih__panel">
+        <p class="hv-eyebrow">Naqsh</p>
+        <h2 id="gh-h">Sakkiz yulduz, bitta o‘lchov</h2>
+        <p class="hv-girih__lead">Girih — hammom polidan gumbazgacha takrorlanadigan geometriya. Avval chizmada hisoblanadi, keyin toshda teriladi.</p>
+        <ol class="hv-girih__steps">
+          <li data-gs="0"><b>01</b><span><strong>To‘r</strong>Kompas va chizg‘ich: bitta modul butun xonaga yoyiladi</span></li>
+          <li data-gs="1"><b>02</b><span><strong>Yulduz</strong>Sakkiz qirrali tasmalar markazdan tarqaladi</span></li>
+          <li data-gs="2"><b>03</b><span><strong>Tosh</strong>Yulduzlar oniks, oraliqlar mozaika bilan to‘ladi</span></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
@@ -366,6 +389,8 @@
 
 <div class="hv-cursor" aria-hidden="true"><i></i></div>
 <script src="vendor/lenis.min.js" defer></script>
+<script src="steam.js" defer></script>
+<script src="girih.js" defer></script>
 <script src="fog.js" defer></script>
 <script src="blueprints.js"></script>
 <script src="app.js" defer></script>

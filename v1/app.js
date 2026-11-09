@@ -99,7 +99,13 @@
     else if (typeof startSteam === 'function' && !reduce) startSteam();
     onScroll();
   };
-  var laterFog = function () { setTimeout(startFog, 250); };
+  /* haqiqiy bug' sprite'lari: tuman ostida ko'tariladi, sichqoncha/barmoq bilan itariladi */
+  var puffCanvas = $('[data-puffs]'), puffs = null;
+  var startPuffs = function () {
+    if (!puffCanvas || !window.HVPuffs || saveData) return;
+    try { puffs = window.HVPuffs(puffCanvas, hero, { still: reduce, src: 'img/steam.webp' }) || null; } catch (e) { puffs = null; }
+  };
+  var laterFog = function () { setTimeout(function () { startFog(); startPuffs(); }, 250); };
   if (document.readyState === 'complete') laterFog(); else window.addEventListener('load', laterFog);
 
   /* hero: 3D chuqurlik — rasm, tuman va matn sichqonchaga turli masofada javob beradi; scroll = hammom ichiga kirish */
@@ -113,6 +119,7 @@
       var hs = clamp(window.scrollY / (hero.offsetHeight || vh), 0, 1);
       hero.style.setProperty('--hs', hs.toFixed(3));
       if (fog) fog.setScroll(hs);
+      if (puffs) puffs.setScroll(hs);
     });
   }
 
@@ -351,6 +358,29 @@
 
   /* kosa qatlamlari: scroll bilan ajraladi, ro'yxat qatlamni yoritadi */
   var lay = $('[data-layers]');
+  /* girih: scroll bilan chiziladigan naqsh (to'r -> yulduz -> tosh), sichqoncha ortidan yorug'lik */
+  var gh = $('[data-girih]');
+  if (gh && window.HVGirih) {
+    var ghField = $('[data-girih-field]', gh), ghSteps = $$('[data-gs]', gh), ghApi = null;
+    var ghMake = function () { if (!ghApi) { try { ghApi = window.HVGirih(ghField, { onyx: 'img/oniks.webp' }); } catch (e) { ghApi = null; } } };
+    if (reduce) { gh.classList.add('is-still'); gh.style.setProperty('--gp', '1'); ghSteps.forEach(function (li) { li.classList.add('is-on'); }); }
+    new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { o.disconnect(); ghMake(); onScroll(); } }, { rootMargin: '600px 0px' }).observe(gh);
+    if (!reduce) scrollFx.push(function (vh) {
+      var r = gh.getBoundingClientRect();
+      if (r.bottom < -vh || r.top > vh * 1.5) return;
+      var p = clamp((vh * .35 - r.top) / Math.max(1, r.height - vh * .65), 0, 1);
+      gh.style.setProperty('--gp', p.toFixed(4));
+      ghSteps.forEach(function (li, i) { var a = [0, .24, .6][i]; li.classList.toggle('is-on', p >= a); li.classList.toggle('is-now', p >= a && p < ([.24, .6, 2][i])); });
+    });
+    if (hoverDev && !reduce) gh.addEventListener('pointermove', function (e) {
+      var r = gh.querySelector('.hv-girih__stage').getBoundingClientRect();
+      gh.style.setProperty('--sx', (e.clientX - r.left).toFixed(0) + 'px');
+      gh.style.setProperty('--sy', (e.clientY - r.top).toFixed(0) + 'px');
+      gh.classList.add('is-spot');
+    }, { passive: true });
+    gh.addEventListener('pointerleave', function () { gh.classList.remove('is-spot'); });
+  }
+
   if (lay) {
     var stack = $('.hv-layers__stack', lay), lis = $$('.hv-layers__list li', lay), ls = $$('i', stack);
     if (!reduce) scrollFx.push(function (vh) {
