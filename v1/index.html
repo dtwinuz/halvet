@@ -6,10 +6,19 @@
 <title>Halvet — shaxsiy hammom, sauna va basseynlar</title>
 <meta name="description" content="Halvet shaxsiy turk hammomi, sauna va basseynlarni loyihadan topshirishgacha quradi: qurilish, nasos va filtratsiya, isitish, elektrika, santexnika va mozaika bitta oila qo‘lida.">
 <meta name="theme-color" content="#0d1113">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Italiana&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/hammom.jpg">
+<link rel="canonical" href="https://halvet.dtwin.uz/">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://halvet.dtwin.uz/">
+<meta property="og:site_name" content="Halvet">
+<meta property="og:title" content="Halvet — shaxsiy hammom, sauna va basseynlar">
+<meta property="og:description" content="Loyihadan birinchi bug‘gacha bitta oila qo‘lida: qurilish, muhandislik va qo‘l mehnati bilan pardoz.">
+<meta property="og:image" content="https://halvet.dtwin.uz/img/hammom.jpg">
+<meta property="og:locale" content="uz_UZ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="fonts/cormorantgaramond-normal-300-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/manrope-normal-400-latin.woff2" crossorigin>
+<link rel="preload" as="image" imagesrcset="img/hammom-640.webp 640w, img/hammom-1024.webp 1024w, img/hammom-1600.webp 1600w, img/hammom-2000.webp 2000w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,14 +43,14 @@
 <main id="top">
 
 <section class="hv-hero" aria-labelledby="hero-h">
-  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom.jpg" alt=""></div>
+  <div class="hv-hero__media" aria-hidden="true"><img src="img/hammom-1600.webp" srcset="img/hammom-640.webp 640w, img/hammom-1024.webp 1024w, img/hammom-1600.webp 1600w, img/hammom-2000.webp 2000w" sizes="100vw" decoding="async" alt="" fetchpriority="high"></div>
+  <div class="hv-hero__glow" aria-hidden="true" data-glow></div>
   <canvas class="hv-hero__steam" data-steam aria-hidden="true"></canvas>
   <div class="hv-hero__shade" aria-hidden="true"></div>
+  <div class="hv-hero__rays" aria-hidden="true"><i></i><i></i><i></i></div>
   <div class="hv-wrap hv-hero__body">
-    <p class="hv-kicker" data-in>Hammom · Sauna · Basseyn</p>
-    <h1 id="hero-h" data-in>Shaxsiy hammom, sauna <br>va <em>basseynlar</em></h1>
+    <h1 id="hero-h" class="hv-title"><span class="hv-line"><span>Shaxsiy hammom,</span></span> <span class="hv-line"><span>sauna va</span></span> <span class="hv-line"><span><em>basseynlar</em></span></span></h1>
     <div class="hv-hero__foot" data-in>
-      <p>Loyihadan birinchi bug‘gacha — bitta oila qo‘lida: qurilish, muhandislik va qo‘l mehnati bilan pardoz.</p>
       <a class="hv-btn hv-btn--solid" href="#aloqa">Konsultatsiyaga yozilish</a>
     </div>
   </div>
@@ -52,14 +61,14 @@
   <div class="hv-wrap hv-manifest__grid">
     <div class="hv-manifest__text">
       <p class="hv-eyebrow" data-reveal>Halvet nima</p>
-      <h2 id="man-h" class="hv-statement" data-reveal>Halvet — turk hammomidagi eng issiq va eng sokin xona. Biz xuddi shunday makonlar quramiz: begona ko‘zdan yopiq, faqat siz uchun.</h2>
+      <h2 id="man-h" class="hv-statement" data-words>Halvet — hammomdagi eng issiq va sokin xona. Biz shunday makonlar quramiz: faqat siz uchun.</h2>
       <ul class="hv-facts" data-reveal>
-        <li><b>5</b><span>yo‘nalish bitta jamoada: qurilish, nasos-filtr, elektrika, santexnika, mozaika</span></li>
-        <li><b>1</b><span>mas’ul shaxs — birinchi o‘lchovdan topshirishgacha</span></li>
-        <li><b>∞</b><span>servis: filtr, suv kimyosi va uskunalar topshirilgandan keyin ham</span></li>
+        <li><b>5</b><span>yo‘nalish bitta jamoada</span></li>
+        <li><b>1</b><span>mas’ul shaxs boshidan oxirigacha</span></li>
+        <li><b>∞</b><span>servis topshirilgandan keyin ham</span></li>
       </ul>
     </div>
-    <figure class="hv-dome" data-reveal><img src="img/gumbaz.jpg" alt="Hammom gumbazining ichki ko‘rinishi, yorug‘lik teshiklari" loading="lazy"></figure>
+    <figure class="hv-dome" data-reveal data-dome><img src="img/gumbaz-1600.webp" srcset="img/gumbaz-640.webp 640w, img/gumbaz-1024.webp 1024w, img/gumbaz-1600.webp 1600w, img/gumbaz-2000.webp 2000w" sizes="(max-width: 900px) 80vw, 40vw" decoding="async" alt="Hammom gumbazining ichki ko‘rinishi, yorug‘lik teshiklari" loading="lazy"></figure>
   </div>
 </section>
 
@@ -71,30 +80,27 @@
     </div>
     <div class="hv-spaces__row">
       <article class="hv-space is-open" data-space tabindex="0">
-        <img src="img/kurna.jpg" alt="Marmar kurna va mis kosa" loading="lazy">
+        <img src="img/kurna-1600.webp" srcset="img/kurna-640.webp 640w, img/kurna-1024.webp 1024w, img/kurna-1600.webp 1600w, img/kurna-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 55vw" decoding="async" alt="Marmar kurna va mis kosa" loading="lazy">
         <div class="hv-space__body">
           <span class="hv-space__no">01</span>
           <h3>Turk hammomi</h3>
           <dl><div><dt>Havo</dt><dd>40–50 °C</dd></div><div><dt>Namlik</dt><dd>to‘yingan bug‘</dd></div></dl>
-          <p>Isitiladigan marmar supa (göbek taşı), gumbaz va yorug‘lik teshiklari, kurnalar, bug‘ generatori, issiq pol va drenaj.</p>
         </div>
       </article>
       <article class="hv-space" data-space tabindex="0">
-        <img src="img/sauna.jpg" alt="Termo-yog‘ochli fin saunasi" loading="lazy">
+        <img src="img/sauna-1600.webp" srcset="img/sauna-640.webp 640w, img/sauna-1024.webp 1024w, img/sauna-1600.webp 1600w, img/sauna-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 55vw" decoding="async" alt="Termo-yog‘ochli fin saunasi" loading="lazy">
         <div class="hv-space__body">
           <span class="hv-space__no">02</span>
           <h3>Fin saunasi</h3>
           <dl><div><dt>Havo</dt><dd>80–100 °C</dd></div><div><dt>Namlik</dt><dd>10–20%</dd></div></dl>
-          <p>Termo-yog‘och, pech va toshlar, issiqlik izolyatsiyasi, uch fazali alohida liniya va ventilyatsiya.</p>
         </div>
       </article>
       <article class="hv-space" data-space tabindex="0">
-        <img src="img/basseyn.jpg" alt="Firuza mozaikali yopiq basseyn" loading="lazy">
+        <img src="img/basseyn-1600.webp" srcset="img/basseyn-640.webp 640w, img/basseyn-1024.webp 1024w, img/basseyn-1600.webp 1600w, img/basseyn-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 55vw" decoding="async" alt="Firuza mozaikali yopiq basseyn" loading="lazy">
         <div class="hv-space__body">
           <span class="hv-space__no">03</span>
           <h3>Basseyn</h3>
           <dl><div><dt>Suv</dt><dd>26–28 °C</dd></div><div><dt>Tozalash</dt><dd>uzluksiz</dd></div></dl>
-          <p>Kosa va gidroizolyatsiya, skimmer yoki toshqin tizimi, nasos, qum filtri, isitish, dozalash, yoritish va mozaika.</p>
         </div>
       </article>
     </div>
@@ -102,8 +108,8 @@
 </section>
 
 <section class="hv-band" aria-label="Hovlidagi hammom va basseyn">
-  <div class="hv-band__media" data-parallax><img src="img/villa.jpg" alt="Tog‘ etagidagi villa: gumbazli hammom pavilyoni va toshqin basseyn" loading="lazy"></div>
-  <div class="hv-wrap hv-band__text"><p data-reveal>Hammom, sauna va basseyn — bitta hovlida, bitta loyiha sifatida.</p></div>
+  <div class="hv-band__media" data-parallax><img src="img/villa-1600.webp" srcset="img/villa-640.webp 640w, img/villa-1024.webp 1024w, img/villa-1600.webp 1600w, img/villa-2000.webp 2000w" sizes="100vw" decoding="async" alt="Tog‘ etagidagi villa: gumbazli hammom pavilyoni va toshqin basseyn" loading="lazy"></div>
+  <div class="hv-wrap hv-band__text"><p data-reveal>Hammom, sauna va basseyn: bitta hovlida, bitta loyiha sifatida.</p></div>
 </section>
 
 <section class="hv-sec hv-eng" id="muhandislik" aria-labelledby="eng-h">
@@ -111,10 +117,10 @@
     <div class="hv-eng__intro">
       <div class="hv-head hv-head--dark" data-reveal>
         <p class="hv-eyebrow">Muhandislik</p>
-        <h2 id="eng-h">Devor ichidagi ish — bizning asosiy ishimiz</h2>
-        <p>Marmar va mozaika ostida nasoslar, filtrlar, quvurlar va kabellar turadi. Ularni loyihalaymiz, o‘rnatamiz va o‘zimiz ishga tushiramiz. Quyida beshta tizimning chizmasi.</p>
+        <h2 id="eng-h">Asosiy ishimiz devor ichida</h2>
+        <p>Nasos, filtr, quvur va kabellarni o‘zimiz loyihalaymiz va ishga tushiramiz.</p>
       </div>
-      <figure class="hv-eng__photo" data-reveal><img src="img/texnik.jpg" alt="Basseyn texnik xonasi: qum filtri, nasos, issiqlik almashtirgich va boshqaruv shiti" loading="lazy"></figure>
+      <figure class="hv-eng__photo hv-clip" data-reveal><img src="img/texnik-1600.webp" srcset="img/texnik-640.webp 640w, img/texnik-1024.webp 1024w, img/texnik-1600.webp 1600w, img/texnik-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" decoding="async" alt="Basseyn texnik xonasi: qum filtri, nasos, issiqlik almashtirgich va boshqaruv shiti" loading="lazy"></figure>
     </div>
 
     <div class="hv-bp" data-bp>
@@ -136,12 +142,12 @@
 
 <section class="hv-sec hv-craft" id="hunar" aria-labelledby="cr-h">
   <div class="hv-wrap hv-craft__grid">
-    <figure class="hv-craft__photo" data-reveal><img src="img/mozaika.jpg" alt="Usta qo‘lda mozaika termoqda" loading="lazy"></figure>
+    <figure class="hv-craft__photo hv-clip" data-reveal><img src="img/mozaika-1600.webp" srcset="img/mozaika-640.webp 640w, img/mozaika-1024.webp 1024w, img/mozaika-1600.webp 1600w, img/mozaika-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 45vw" decoding="async" alt="Usta qo‘lda mozaika termoqda" loading="lazy"></figure>
     <div class="hv-craft__text">
       <div class="hv-head" data-reveal>
         <p class="hv-eyebrow">Hunar</p>
         <h2 id="cr-h">Har bir tosh qo‘lda qo‘yiladi</h2>
-        <p>Mozaika, marmar va yog‘och — bularni zavod emas, usta qo‘li tugatadi. Materiallarni siz bilan birga tanlaymiz.</p>
+        <p>Mozaika, marmar va yog‘ochni usta qo‘li tugatadi.</p>
       </div>
       <ul class="hv-materials" data-reveal>
         <li><b>Marmar va travertin</b><span>Göbek taşı, kurna, pol va zinapoyalar</span></li>
@@ -159,24 +165,25 @@
       <p class="hv-eyebrow">Jarayon</p>
       <h2 id="pr-h">Olti bosqich, bitta mas’ul</h2>
     </div>
-    <ol class="hv-steps" data-reveal>
-      <li><span>01</span><h3>Tashrif va o‘lchov</h3><p>Joy, poydevor, suv, kanalizatsiya va elektr kirishini ko‘ramiz.</p></li>
-      <li><span>02</span><h3>Loyiha va chizmalar</h3><p>Arxitektura, muhandislik sxemalari va uskunalar ro‘yxati.</p></li>
-      <li><span>03</span><h3>Smeta</h3><p>Har bir bosqich va material narxi alohida yoziladi.</p></li>
-      <li><span>04</span><h3>Qurilish va tizimlar</h3><p>Kosa, gumbaz, izolyatsiya, quvurlar, kabellar, uskunalar.</p></li>
-      <li><span>05</span><h3>Pardoz</h3><p>Marmar, mozaika, yog‘och va yoritish — qo‘lda.</p></li>
-      <li><span>06</span><h3>Ishga tushirish</h3><p>Sinov, sozlash, foydalanishni o‘rgatish, servis.</p></li>
+    <div class="hv-rail" aria-hidden="true"><i data-rail></i></div>
+    <ol class="hv-steps" data-reveal data-steps>
+      <li><span>01</span><h3>Tashrif va o‘lchov</h3></li>
+      <li><span>02</span><h3>Loyiha va chizmalar</h3></li>
+      <li><span>03</span><h3>Smeta</h3></li>
+      <li><span>04</span><h3>Qurilish va tizimlar</h3></li>
+      <li><span>05</span><h3>Pardoz</h3></li>
+      <li><span>06</span><h3>Ishga tushirish</h3></li>
     </ol>
   </div>
 </section>
 
 <section class="hv-contact" id="aloqa" aria-labelledby="ct-h">
-  <figure class="hv-contact__media" aria-hidden="true"><img src="img/basseyn.jpg" alt="" loading="lazy"></figure>
+  <figure class="hv-contact__media" aria-hidden="true"><img src="img/basseyn-1600.webp" srcset="img/basseyn-640.webp 640w, img/basseyn-1024.webp 1024w, img/basseyn-1600.webp 1600w, img/basseyn-2000.webp 2000w" sizes="(max-width: 900px) 100vw, 50vw" decoding="async" alt="" loading="lazy"></figure>
   <div class="hv-contact__panel">
     <div class="hv-head hv-head--dark">
       <p class="hv-eyebrow">Konsultatsiya</p>
       <h2 id="ct-h">Makoningizni birga rejalaymiz</h2>
-      <p>Qisqacha yozing — o‘zimiz qo‘ng‘iroq qilamiz va tashrif vaqtini kelishamiz.</p>
+      <p>Yozing, o‘zimiz qo‘ng‘iroq qilamiz.</p>
     </div>
     <form class="hv-form" data-form novalidate>
       <div class="hv-form__row">
@@ -209,7 +216,7 @@
       <nav aria-label="Pastki menyu"><a href="#makonlar">Makonlar</a><a href="#muhandislik">Muhandislik</a><a href="#hunar">Hunar</a><a href="#jarayon">Jarayon</a><a href="#aloqa">Konsultatsiya</a></nav>
       <p>Hammom · Sauna · Basseyn</p>
     </div>
-    <p class="hv-foot__mark" aria-hidden="true">HALVET</p>
+    <p class="hv-foot__mark" aria-hidden="true" data-reveal>HALVET</p>
     <p class="hv-foot__legal">© <span data-year>2026</span> Halvet</p>
   </div>
 </footer>
