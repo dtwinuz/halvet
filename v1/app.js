@@ -1,4 +1,5 @@
 (function () {
+  var VER = (function () { var s = document.currentScript && document.currentScript.src || ''; var i = s.indexOf('?v='); return i < 0 ? '' : s.slice(i + 3); })();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hoverDev = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -40,9 +41,9 @@
 
   /* tuman/bug': rasm ustida suzib yuradi va ko'tariladi. Past aniqlikda chiziladi (yumshoq va arzon),
      30 fps, ekrandan chiqsa yoki tab yashirilsa to'xtaydi */
-  var cv = $('[data-steam]');
+  var cv = $('[data-steam]'), startSteam = null;
   if (cv && !reduce) {
-    var startSteam = function () {
+    startSteam = function () {
       var ctx = cv.getContext('2d'), W, H, Q = 0.35, puffs = [], visible = true, looping = false, last = 0;
       // bulutsimon sprite: bir nechta siljigan dog'lar
       var sprite = document.createElement('canvas'); sprite.width = sprite.height = 128;
@@ -87,9 +88,32 @@
       new IntersectionObserver(function (e) { visible = e[0].isIntersecting; go(); }).observe(hero);
       document.addEventListener('visibilitychange', go);
     };
-    // LCP va birinchi bo'yashdan keyin
-    var later = function () { setTimeout(startSteam, 400); };
-    if (document.readyState === 'complete') later(); else window.addEventListener('load', later);
+  }
+  /* hero tumani: avval WebGL shader (jonli, sichqonchaga javob beradi), bo'lmasa 2D bug' */
+  var fogCanvas = $('[data-fog]'), fog = null;
+  var startFog = function () {
+    if (fogCanvas && window.HVFog) {
+      try { fog = window.HVFog(fogCanvas, hero, { still: reduce, onLost: function () { hero.classList.remove('is-gl'); if (startSteam && !reduce) startSteam(); } }); } catch (e) { fog = null; }
+    }
+    if (fog) hero.classList.add('is-gl');
+    else if (typeof startSteam === 'function' && !reduce) startSteam();
+    onScroll();
+  };
+  var laterFog = function () { setTimeout(startFog, 250); };
+  if (document.readyState === 'complete') laterFog(); else window.addEventListener('load', laterFog);
+
+  /* hero: 3D chuqurlik — rasm, tuman va matn sichqonchaga turli masofada javob beradi; scroll = hammom ichiga kirish */
+  if (!reduce) {
+    if (hoverDev) hero.addEventListener('pointermove', function (e) {
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5).toFixed(3));
+      hero.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5).toFixed(3));
+    }, { passive: true });
+    scrollFx.push(function (vh) {
+      var hs = clamp(window.scrollY / (hero.offsetHeight || vh), 0, 1);
+      hero.style.setProperty('--hs', hs.toFixed(3));
+      if (fog) fog.setScroll(hs);
+    });
   }
 
   /* hero: sichqoncha ortidan yorug'lik (faqat sichqonchali qurilmada) */
@@ -129,13 +153,104 @@
     });
   }
 
-  /* gumbaz: aylanib turgan yorug'lik teshiklari — scroll bilan */
-  var dome = $('[data-dome] img');
-  if (dome && !reduce) {
+  /* gumbaz: 3D sahna (three.js, faqat yaqinlashganda yuklanadi); WebGL bo'lmasa surat scroll bilan aylanadi */
+  var domeFig = $('[data-dome]'), dome = domeFig && $('img', domeFig), dome3d = null;
+  if (dome) {
     scrollFx.push(function (vh) {
-      var r = dome.getBoundingClientRect();
+      var r = domeFig.getBoundingClientRect();
       if (r.bottom < 0 || r.top > vh) return;
-      dome.style.setProperty('--rot', (((r.top + r.height / 2) / vh - .5) * -50).toFixed(2) + 'deg');
+      var k = (r.top + r.height / 2) / vh - .5;
+      if (dome3d) dome3d.setScroll(-k);
+      else if (!reduce) dome.style.setProperty('--rot', (k * -50).toFixed(2) + 'deg');
+    });
+    var glOk = (function () { try { var c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+    var saveData = navigator.connection && navigator.connection.saveData;
+    if (glOk && !saveData) {
+      new IntersectionObserver(function (e, o) {
+        if (!e[0].isIntersecting) return;
+        o.disconnect();
+        var go3d = function () {
+          import('./dome.js' + (VER ? '?v=' + VER : '')).then(function (m) { return m.mountDome(domeFig, dome, { reduce: reduce }); })
+            .then(function (h) { dome3d = h; dome.style.removeProperty('--rot'); onScroll(); })
+            .catch(function () { domeFig.classList.remove('is-3d'); });
+        };
+        if (dome.complete) go3d(); else dome.addEventListener('load', go3d, { once: true });
+      }, { rootMargin: '600px 0px' }).observe(domeFig);
+    }
+  }
+
+  /* villa: kichik ramkadan butun ekranga ochiladi */
+  var band = $('.hv-band');
+  if (band && !reduce) {
+    scrollFx.push(function (vh) {
+      var r = band.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      var p = clamp((vh - r.top) / (vh * .85), 0, 1), k = 1 - p;
+      band.style.setProperty('--bi', (k * 9).toFixed(2) + '%');
+      band.style.setProperty('--bj', (k * 12).toFixed(2) + '%');
+      band.style.setProperty('--br', (k * 28).toFixed(1) + 'px');
+      band.style.setProperty('--bs', (1.18 - p * .18).toFixed(3));
+    });
+  }
+
+  /* 3D egilish + yaltirash: makon kartalari va chizma varag'i */
+  var tilt = function (el, max) {
+    el.addEventListener('pointermove', function (e) {
+      var r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      el.style.setProperty('--ry', ((x - .5) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--rx', ((.5 - y) * max).toFixed(2) + 'deg');
+      el.style.setProperty('--gx', (x * 100).toFixed(1) + '%');
+      el.style.setProperty('--gy', (y * 100).toFixed(1) + '%');
+    }, { passive: true });
+    el.addEventListener('pointerleave', function () { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+  };
+  if (hoverDev && !reduce) {
+    $$('[data-space]').forEach(function (s) { tilt(s, 7); });
+    var sheet = $('.hv-bp__sheet'); if (sheet) tilt(sheet, 4);
+  }
+
+  /* maxsus kursor + magnit tugmalar (faqat sichqoncha) */
+  if (hoverDev && !reduce) {
+    var curEl = $('.hv-cursor');
+    if (curEl) {
+      var cx = -100, cy = -100, px = -100, py = -100, cRun = false;
+      var cLoop = function () {
+        px += (cx - px) * .2; py += (cy - py) * .2;
+        curEl.style.transform = 'translate3d(' + px.toFixed(1) + 'px,' + py.toFixed(1) + 'px,0)';
+        if (Math.abs(cx - px) + Math.abs(cy - py) > .3) requestAnimationFrame(cLoop); else cRun = false;
+      };
+      document.addEventListener('pointermove', function (e) {
+        if (e.pointerType !== 'mouse') return;
+        cx = e.clientX; cy = e.clientY; curEl.classList.add('is-on');
+        var t = e.target.closest && e.target.closest('a,button,[data-space],.bp-c,label,input,textarea');
+        curEl.classList.toggle('is-big', !!t);
+        curEl.classList.toggle('is-text', !!(e.target.closest && e.target.closest('input,textarea')));
+        if (!cRun) { cRun = true; requestAnimationFrame(cLoop); }
+      }, { passive: true });
+      document.addEventListener('pointerleave', function () { curEl.classList.remove('is-on'); });
+      document.documentElement.classList.add('has-cursor');
+    }
+    $$('.hv-btn').forEach(function (b) {
+      b.addEventListener('pointermove', function (e) {
+        var r = b.getBoundingClientRect();
+        b.style.setProperty('--bx', ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px');
+        b.style.setProperty('--by', ((e.clientY - r.top - r.height / 2) * .35).toFixed(1) + 'px');
+      });
+      b.addEventListener('pointerleave', function () { b.style.setProperty('--bx', '0px'); b.style.setProperty('--by', '0px'); });
+    });
+  }
+
+  /* silliq inersiyali scroll (Lenis); anchor'lar ham silliq */
+  if (window.Lenis && !reduce && hoverDev) {
+    var lenis = new window.Lenis({ lerp: .09, smoothWheel: true });
+    var lraf = function (t) { lenis.raf(t); requestAnimationFrame(lraf); };
+    requestAnimationFrame(lraf);
+    $$('a[href^="#"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href'), el = id === '#top' ? 0 : $(id);
+        if (el === null) return;
+        e.preventDefault(); lenis.scrollTo(el, { offset: id === '#top' ? 0 : -60, duration: 1.6 });
+      });
     });
   }
 
