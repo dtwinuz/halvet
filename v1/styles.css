@@ -616,3 +616,5 @@ html.lenis,html.lenis body{height:auto}
   .hv-fly__prog{top:80px;bottom:auto}
   .hv-eq.is-3d .hv-eq__hud{bottom:92px}
 }
+.hv-layers__stack i:nth-child(1){--i:0}.hv-layers__stack i:nth-child(2){--i:1}.hv-layers__stack i:nth-child(3){--i:2}.hv-layers__stack i:nth-child(4){--i:3}
+.hv-layers__stack i:nth-child(5){--i:4}.hv-layers__stack i:nth-child(6){--i:5}.hv-layers__stack i:nth-child(7){--i:6}.hv-layers__stack i:nth-child(8){--i:7}

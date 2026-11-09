@@ -358,8 +358,8 @@
       if (r.bottom < 0 || r.top > vh) return;
       stack.style.setProperty('--ex', clamp((vh * .9 - r.top) / (vh * .7), 0, 1).toFixed(3));
     });
-    lis.forEach(function (li) {
-      var i = +li.style.getPropertyValue('--i');
+    lis.forEach(function (li, n) {
+      var i = ls.length - 1 - n;
       var on = function (v) { ls[i].classList.toggle('is-hot', v); li.classList.toggle('is-hot', v); stack.classList.toggle('has-hot', v); };
       li.addEventListener('mouseenter', function () { on(true); });
       li.addEventListener('mouseleave', function () { on(false); });
