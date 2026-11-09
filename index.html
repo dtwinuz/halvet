@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gumbazsoz — hammom, sauna va basseyn qurilishi</title>
+<meta name="description" content="Turk hammomi, fin saunasi va basseynni loyihadan topshirishgacha bitta jamoa quradi: qurilish, elektr, santexnika, nasos-filtr va mozaika.">
+<meta name="theme-color" content="#0b1416">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body id="top">
+
+<header class="gz-nav" data-nav>
+  <div class="gz-wrap gz-nav__row">
+    <a class="gz-logo" href="#top" aria-label="Gumbazsoz, bosh sahifa">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 23a12 12 0 0 1 24 0M8 23v12M32 23v12M4 35h32M6 23h28M20 11V5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="20" cy="16" r="1.5" fill="currentColor"/><circle cx="14.5" cy="19" r="1.3" fill="currentColor"/><circle cx="25.5" cy="19" r="1.3" fill="currentColor"/><path d="M17 35v-6a3 3 0 0 1 6 0v6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+      <span>Gumbazsoz</span>
+    </a>
+    <nav class="gz-nav__links" aria-label="Bo‘limlar">
+      <a href="#zonalar">Xizmatlar</a>
+      <a href="#muhandislik">Muhandislik</a>
+      <a href="#mozaika">Mozaika</a>
+      <a href="#bosqichlar">Bosqichlar</a>
+      <a href="#savollar">Savollar</a>
+    </nav>
+    <a class="gz-btn gz-btn--primary gz-nav__cta" href="#ariza">Smeta so‘rash</a>
+    <button class="gz-burger" aria-label="Menyu" aria-expanded="false" data-burger><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<section class="gz-hero" aria-labelledby="hero-h">
+  <canvas class="gz-hero__canvas" data-dome aria-hidden="true"></canvas>
+  <div class="gz-hero__veil" aria-hidden="true"></div>
+  <div class="gz-wrap gz-hero__body">
+    <p class="gz-kicker">Turk hammomi · Fin saunasi · Basseyn</p>
+    <h1 id="hero-h">Hammom, sauna va basseynni <em>kalitgacha</em> quramiz</h1>
+    <p class="gz-hero__lead">Poydevordan birinchi bug‘gacha bitta oilaviy jamoa: qurilish, elektr, santexnika, nasos va filtrlar, mozaika. Ish bir qo‘lda — javob ham bir kishida.</p>
+    <div class="gz-hero__actions">
+      <a class="gz-btn gz-btn--primary" href="#ariza">Smeta so‘rash</a>
+      <a class="gz-btn gz-btn--ghost" href="#muhandislik">Muhandislikni ko‘rish</a>
+    </div>
+    <ul class="gz-hero__facts" aria-label="Biz qiladigan ishlar">
+      <li><b>5</b> yo‘nalish bitta pudratchida</li>
+      <li><b>3</b> xil issiqlik: hammom, sauna, basseyn</li>
+      <li><b>1</b> mas’ul — boshidan oxirigacha</li>
+    </ul>
+  </div>
+  <a class="gz-hero__scroll" href="#zonalar" aria-label="Pastga"><span></span></a>
+</section>
+
+<section class="gz-sec gz-zones" id="zonalar" aria-labelledby="zones-h">
+  <div class="gz-wrap">
+    <div class="gz-head">
+      <h2 id="zones-h">Uch xil issiqlik, uch xil muhandislik</h2>
+      <p>Har birining harorati, namligi va ichidagi texnikasi boshqa. Shuning uchun har birini alohida loyihalaymiz.</p>
+    </div>
+    <div class="gz-zones__grid">
+      <div class="gz-gauge" aria-hidden="true">
+        <svg viewBox="0 0 320 320">
+          <defs>
+            <linearGradient id="gz-arc" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#2bb3b1"/><stop offset=".55" stop-color="#e0a458"/><stop offset="1" stop-color="#c2552d"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="160" r="130" class="gz-gauge__track"/>
+          <circle cx="160" cy="160" r="130" class="gz-gauge__fill" pathLength="100" data-gauge-fill/>
+          <g class="gz-gauge__ticks" data-ticks></g>
+        </svg>
+        <div class="gz-gauge__read">
+          <span class="gz-gauge__temp"><b data-temp>45</b>°C</span>
+          <span class="gz-gauge__hum" data-hum-line>namlik <b data-hum>100</b>%</span>
+        </div>
+      </div>
+      <div class="gz-zones__list" role="tablist" aria-label="Xizmat turi">
+        <button class="gz-zone is-on" role="tab" aria-selected="true" data-zone-btn="hammom" data-t="45" data-h="100" data-p="0.55">
+          <span class="gz-zone__no">01</span>
+          <span class="gz-zone__t">Turk hammomi</span>
+          <span class="gz-zone__d">Isitiladigan marmar supa (göbek taşı), bug‘ generatori, gumbaz, kurna va drenaj. 40–50 °C, to‘yingan bug‘.</span>
+        </button>
+        <button class="gz-zone" role="tab" aria-selected="false" data-zone-btn="sauna" data-t="90" data-h="15" data-p="0.92">
+          <span class="gz-zone__no">02</span>
+          <span class="gz-zone__t">Fin saunasi</span>
+          <span class="gz-zone__d">Pech va toshlar, yog‘och qoplama, issiqlik izolyatsiyasi, ventilyatsiya va alohida elektr liniyasi. 80–100 °C, quruq havo.</span>
+        </button>
+        <button class="gz-zone" role="tab" aria-selected="false" data-zone-btn="basseyn" data-t="28" data-h="" data-p="0.28">
+          <span class="gz-zone__no">03</span>
+          <span class="gz-zone__t">Basseyn</span>
+          <span class="gz-zone__d">Kosa, gidroizolyatsiya, skimmer yoki toshqin tizimi, nasos, qum filtri, isitish, yoritish va mozaika. Suv 26–28 °C.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gz-sec gz-eng" id="muhandislik" aria-labelledby="eng-h">
+  <div class="gz-wrap">
+    <div class="gz-head gz-head--light">
+      <h2 id="eng-h">Devor ichidagi ish — bizning asosiy ishimiz</h2>
+      <p>Chiroyli mozaika ostida quvurlar, nasoslar va elektr turadi. Qism ustiga bosing — nima uchun kerakligini ko‘rasiz.</p>
+    </div>
+    <div class="gz-eng__switch" role="tablist" aria-label="Sxema">
+      <button role="tab" class="is-on" aria-selected="true" data-scheme-btn="pool">Basseyn</button>
+      <button role="tab" aria-selected="false" data-scheme-btn="hammam">Hammom</button>
+    </div>
+    <div class="gz-eng__stage">
+      <div class="gz-eng__svg" data-scheme="pool">
+        <svg viewBox="0 0 1000 520" role="img" aria-label="Basseyn kesimi: kosa, skimmer, nasos, filtr, isitgich, dozator, yoritish va elektr shiti">
+          <defs>
+            <linearGradient id="gz-water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3fc7c2" stop-opacity=".85"/><stop offset="1" stop-color="#0d5a63" stop-opacity=".95"/></linearGradient>
+          </defs>
+          <rect x="0" y="120" width="1000" height="400" class="gz-soil"/>
+          <path d="M0 120H1000" class="gz-ground"/>
+          <path d="M60 120V330Q60 360 90 360H520Q550 360 550 330V120" class="gz-shell"/>
+          <path d="M74 140V322Q74 346 98 346H512Q536 346 536 322V140Z" fill="url(#gz-water)"/>
+          <path d="M74 140V322Q74 346 98 346H512Q536 346 536 322V140" class="gz-tileline"/>
+          <path class="gz-wave" d="M74 140 Q120 132 166 140 T258 140 T350 140 T442 140 T536 140"/>
+          <path class="gz-pipe" d="M556 152H600V430H664"/>
+          <path class="gz-pipe" d="M330 352V420H600"/>
+          <path class="gz-pipe" d="M934 430H980V470H580V280H548"/>
+          <path class="gz-flow" d="M556 152H600V430H664"/>
+          <path class="gz-flow" d="M330 352V420H600"/>
+          <path class="gz-flow gz-flow--ret" d="M934 430H980V470H580V280H548"/>
+          <rect x="630" y="370" width="350" height="130" rx="6" class="gz-room"/>
+          <text x="805" y="364" class="gz-roomlabel">Texnik xona</text>
+          <g class="gz-part" tabindex="0" role="button" data-part="skimmer"><rect x="516" y="140" width="40" height="26" rx="3"/><text x="536" y="108">Skimmer</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="drain"><rect x="312" y="340" width="36" height="12" rx="3"/><text x="330" y="400">Donniy trap</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="pump"><circle cx="690" cy="430" r="26"/><g class="gz-spin"><path d="M690 416v28M676 430h28"/></g><text x="690" y="488">Nasos</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="filter"><rect x="745" y="388" width="52" height="86" rx="24"/><text x="771" y="488">Qum filtri</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="heater"><rect x="822" y="404" width="58" height="52" rx="6"/><path d="M834 418h34M834 430h34M834 442h34" class="gz-coil"/><text x="851" y="488">Isitgich</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="dosing"><rect x="900" y="400" width="34" height="60" rx="6"/><text x="917" y="488">Dozator</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="led"><circle cx="200" cy="262" r="12" class="gz-led"/><circle cx="410" cy="262" r="12" class="gz-led"/><text x="305" y="302">LED yoritish</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="panel"><rect x="900" y="160" width="64" height="90" rx="6"/><path d="M912 180h40M912 196h40M912 212h26" class="gz-coil"/><path class="gz-wire" d="M932 250V370"/><text x="932" y="146">Elektr shiti</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="nozzle"><rect x="524" y="270" width="24" height="20" rx="3"/><text x="460" y="232">Qaytish forsunkasi</text></g>
+        </svg>
+      </div>
+      <div class="gz-eng__svg" data-scheme="hammam" hidden>
+        <svg viewBox="0 0 1000 520" role="img" aria-label="Hammom kesimi: gumbaz, marmar supa, bug‘ generatori, issiq pol, kurna, ventilyatsiya va drenaj">
+          <defs>
+            <linearGradient id="gz-steam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#ffffff" stop-opacity=".16"/></linearGradient>
+            <linearGradient id="gz-beamg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe2b0" stop-opacity=".55"/><stop offset="1" stop-color="#ffe2b0" stop-opacity="0"/></linearGradient>
+          </defs>
+          <rect x="0" y="440" width="1000" height="80" class="gz-soil"/>
+          <path d="M0 440H1000" class="gz-ground"/>
+          <path d="M120 440V250A260 230 0 0 1 640 250V440" class="gz-shell"/>
+          <path d="M136 440V252A244 214 0 0 1 624 252V440Z" fill="url(#gz-steam)"/>
+          <path class="gz-beam" d="M372 44L318 400H440L388 44Z" fill="url(#gz-beamg)"/>
+          <path class="gz-beam gz-beam--2" d="M300 62L230 400H300L310 62Z" fill="url(#gz-beamg)"/>
+          <path class="gz-beam gz-beam--3" d="M452 62L462 400H540L462 62Z" fill="url(#gz-beamg)"/>
+          <path class="gz-pipe" d="M200 410H560"/><path class="gz-flow gz-flow--hot" d="M200 410H560"/>
+          <path class="gz-pipe" d="M710 315H624"/><path class="gz-flow gz-flow--hot" d="M710 315H624"/>
+          <path class="gz-pipe" d="M560 440V477H840"/><path class="gz-flow gz-flow--ret" d="M560 440V477H840"/>
+          <path class="gz-pipe" d="M600 170H760V94"/><path class="gz-flow gz-flow--air" d="M600 170H760V94"/>
+          <rect x="690" y="250" width="290" height="190" rx="6" class="gz-room"/>
+          <text x="835" y="244" class="gz-roomlabel">Texnik xona</text>
+          <g class="gz-part" tabindex="0" role="button" data-part="dome"><path d="M196 236A184 160 0 0 1 564 236" fill="none" stroke-width="12"/><circle cx="380" cy="44" r="6"/><circle cx="305" cy="62" r="5"/><circle cx="457" cy="62" r="5"/><text x="380" y="24">Gumbaz va yorug‘lik teshiklari</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="gobek"><rect x="290" y="360" width="180" height="34" rx="4"/><text x="380" y="350">Marmar supa (göbek taşı)</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="floor"><rect x="170" y="404" width="420" height="12" rx="3"/><text x="380" y="434">Issiq pol</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="kurna"><rect x="150" y="320" width="50" height="36" rx="6"/><text x="175" y="306">Kurna</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="steam"><rect x="710" y="270" width="70" height="90" rx="8"/><text x="745" y="384">Bug‘ generatori</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="vent"><rect x="730" y="60" width="60" height="34" rx="6"/><text x="760" y="48">Ventilyatsiya</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="drainh"><rect x="840" y="466" width="50" height="22" rx="4"/><text x="865" y="510">Drenaj</text></g>
+          <g class="gz-part" tabindex="0" role="button" data-part="boiler"><rect x="820" y="280" width="70" height="110" rx="10"/><text x="855" y="412">Qozon va boshqaruv</text></g>
+        </svg>
+      </div>
+      <aside class="gz-eng__card" aria-live="polite">
+        <p class="gz-eng__tag" data-part-tag>Qismni tanlang</p>
+        <h3 data-part-title>Har bir quvurni o‘zimiz yotqizamiz</h3>
+        <p data-part-text>Sxemadagi istalgan qismga bosing yoki Tab bilan o‘ting. Basseyn suvi kuniga bir necha marta shu yo‘ldan aylanib chiqadi.</p>
+        <p class="gz-eng__who" data-part-who>Qiladi: santexnika va elektr jamoasi</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="gz-sec gz-mosaic" id="mozaika" aria-labelledby="mos-h">
+  <div class="gz-wrap gz-mosaic__grid">
+    <div class="gz-mosaic__text">
+      <h2 id="mos-h">Basseyn mozaikasini shu yerda tanlang</h2>
+      <p>Rang va naqshni tanlang — suv ostida qanday ko‘rinishini darhol ko‘rasiz. Tanlovingiz arizaga o‘zi qo‘shiladi.</p>
+      <fieldset class="gz-opt">
+        <legend>Rang</legend>
+        <div class="gz-swatches" data-swatches>
+          <button type="button" class="is-on" data-pal="firuza" aria-pressed="true" style="--c:#1fa7a8">Firuza</button>
+          <button type="button" data-pal="moviy" aria-pressed="false" style="--c:#1d5fa8">Moviy</button>
+          <button type="button" data-pal="marmar" aria-pressed="false" style="--c:#d9d4c7">Oq marmar</button>
+          <button type="button" data-pal="granit" aria-pressed="false" style="--c:#2a3134">Qora granit</button>
+          <button type="button" data-pal="oltin" aria-pressed="false" style="--c:#c99a4a">Oltin</button>
+        </div>
+      </fieldset>
+      <fieldset class="gz-opt">
+        <legend>Naqsh</legend>
+        <div class="gz-chips" data-patterns>
+          <button type="button" class="is-on" data-pat="aralash" aria-pressed="true">Aralash</button>
+          <button type="button" data-pat="gradient" aria-pressed="false">Gradient</button>
+          <button type="button" data-pat="tolqin" aria-pressed="false">To‘lqin</button>
+          <button type="button" data-pat="girih" aria-pressed="false">Girih</button>
+        </div>
+      </fieldset>
+      <a class="gz-link" href="#ariza" data-mosaic-send>Shu mozaika bilan smeta so‘rash <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="gz-mosaic__view">
+      <canvas data-mosaic role="img" aria-label="Tanlangan mozaika bilan basseyn ko‘rinishi yuqoridan"></canvas>
+    </div>
+  </div>
+</section>
+
+<section class="gz-sec gz-steps" id="bosqichlar" aria-labelledby="steps-h">
+  <div class="gz-wrap">
+    <div class="gz-head">
+      <h2 id="steps-h">Olti bosqich, bitta mas’ul</h2>
+      <p>Boshqa usta qidirmaysiz: elektrchi, santexnik va mozaikachi bitta jamoada, bitta jadval bo‘yicha ishlaydi.</p>
+    </div>
+    <ol class="gz-steps__list">
+      <li><span>01</span><h3>Joyni o‘lchaymiz</h3><p>Xona, poydevor, suv va elektr kirishini ko‘rib chiqamiz.</p></li>
+      <li><span>02</span><h3>Loyiha va smeta</h3><p>Sxema, uskunalar ro‘yxati va har bosqichning narxi.</p></li>
+      <li><span>03</span><h3>Qurilish va izolyatsiya</h3><p>Kosa, devor, gumbaz, gidro- va bug‘ izolyatsiyasi.</p></li>
+      <li><span>04</span><h3>Elektr va santexnika</h3><p>Kabel, shit, quvurlar, nasos, filtr, bug‘ generatori.</p></li>
+      <li><span>05</span><h3>Mozaika va pardoz</h3><p>Marmar, mozaika, yog‘och, yoritish — qo‘lda teriladi.</p></li>
+      <li><span>06</span><h3>Ishga tushirish</h3><p>Sinov, sozlash, foydalanishni o‘rgatish va servis.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="gz-sec gz-faq" id="savollar" aria-labelledby="faq-h">
+  <div class="gz-wrap gz-faq__grid">
+    <div class="gz-head">
+      <h2 id="faq-h">Ko‘p beriladigan savollar</h2>
+      <p>Javob topmasangiz, arizada yozing — o‘lchovga kelganda batafsil aytamiz.</p>
+    </div>
+    <div class="gz-faq__list">
+      <details open><summary>Faqat bir qismini, masalan, mozaikani buyursa bo‘ladimi?</summary><p>Ha. Elektr, santexnika, nasos-filtr yoki mozaikani alohida ham qilamiz. Kalitgacha olinganda esa kafolat bitta jamoada qoladi.</p></details>
+      <details><summary>Uy ichida yoki podvalda hammom qursa bo‘ladimi?</summary><p>Ko‘p hollarda ha. Asosiy shart — ventilyatsiya, drenaj va bug‘ izolyatsiyasi. Buni o‘lchov paytida tekshiramiz.</p></details>
+      <details><summary>Smeta qanday hisoblanadi?</summary><p>Xona o‘lchami, uskuna va pardoz materiali bo‘yicha. Smetada har bir bosqich narxi alohida yoziladi.</p></details>
+      <details><summary>Eski basseynni ta’mirlaysizmi?</summary><p>Ha: gidroizolyatsiya, mozaikani almashtirish, nasos va filtrni yangilash, yoritish qo‘shish.</p></details>
+      <details><summary>Topshirgandan keyin xizmat ko‘rsatasizmi?</summary><p>Ha. Filtrni yuvish, suv kimyosini sozlash va uskunalarni tekshirishni o‘rgatamiz yoki o‘zimiz qilamiz.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="gz-sec gz-form" id="ariza" aria-labelledby="form-h">
+  <div class="gz-wrap gz-form__grid">
+    <div class="gz-head gz-head--light">
+      <h2 id="form-h">Smeta so‘rash</h2>
+      <p>Nima qurmoqchi ekaningizni yozing. O‘lchov va maslahat uchun o‘zimiz bog‘lanamiz.</p>
+      <ol class="gz-next">
+        <li><b>Qo‘ng‘iroq</b><span>Arizani o‘qib, telefon qilamiz va savollarga javob beramiz.</span></li>
+        <li><b>O‘lchov</b><span>Joyga kelib, xona, suv va elektr kirishini ko‘ramiz.</span></li>
+        <li><b>Smeta</b><span>Har bir bosqich narxi alohida yozilgan smetani beramiz.</span></li>
+      </ol>
+    </div>
+    <form class="gz-form__box" data-form novalidate>
+      <div class="gz-form__row">
+        <label>Ismingiz<input name="ism" autocomplete="name" required></label>
+        <label>Telefon<input name="tel" type="tel" autocomplete="tel" inputmode="tel" required></label>
+      </div>
+      <fieldset class="gz-form__types">
+        <legend>Nima kerak</legend>
+        <label><input type="checkbox" name="tur" value="Hammom" checked><span>Hammom</span></label>
+        <label><input type="checkbox" name="tur" value="Sauna"><span>Sauna</span></label>
+        <label><input type="checkbox" name="tur" value="Basseyn"><span>Basseyn</span></label>
+        <label><input type="checkbox" name="tur" value="Ta’mir"><span>Ta’mir</span></label>
+      </fieldset>
+      <div class="gz-form__row">
+        <label>Shahar yoki tuman<input name="joy"></label>
+        <label>Taxminiy maydon, m²<input name="maydon" inputmode="decimal"></label>
+      </div>
+      <label>Izoh<textarea name="izoh" rows="3" data-note></textarea></label>
+      <button class="gz-btn gz-btn--primary gz-btn--wide" type="submit">Smeta so‘rash</button>
+      <p class="gz-form__msg" data-form-msg role="status"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="gz-foot">
+  <div class="gz-wrap">
+    <div class="gz-foot__row">
+      <a class="gz-logo" href="#top"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 23a12 12 0 0 1 24 0M8 23v12M32 23v12M4 35h32M6 23h28M20 11V5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="20" cy="16" r="1.5" fill="currentColor"/><circle cx="14.5" cy="19" r="1.3" fill="currentColor"/><circle cx="25.5" cy="19" r="1.3" fill="currentColor"/><path d="M17 35v-6a3 3 0 0 1 6 0v6" fill="none" stroke="currentColor" stroke-width="2.2"/></svg><span>Gumbazsoz</span></a>
+      <nav aria-label="Pastki menyu"><a href="#zonalar">Xizmatlar</a><a href="#muhandislik">Muhandislik</a><a href="#mozaika">Mozaika</a><a href="#bosqichlar">Bosqichlar</a><a href="#ariza">Ariza</a></nav>
+    </div>
+    <p class="gz-foot__name" aria-hidden="true">Gumbazsoz</p>
+    <p class="gz-foot__legal">© <span data-year>2026</span> Gumbazsoz · Hammom, sauna va basseyn qurilishi</p>
+  </div>
+</footer>
+
+<a class="gz-bar gz-btn gz-btn--primary" href="#ariza">Smeta so‘rash</a>
+
+<script src="app.js" defer></script>
+</body>
+</html>
