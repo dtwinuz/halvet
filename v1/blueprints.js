@@ -155,6 +155,36 @@
     LG([['air', 'bug‘ / chiqish'], ['cold', 'toza havo'], ['waste', 'drenaj']])
   );
 
+  var kimyo = svg('Suv kimyosi va dozalash sxemasi',
+    F('M14 330 H786', 'cold') + T(14, 318, 'FILTRDAN', 'bp-ts') + T(786, 318, 'BASSEYNGA', 'bp-ts', 'end') +
+    B(150, 306, 110, 48, 'Issiqlik', 'almashtirgich') +
+    '<rect class="bp-fill" x="320" y="318" width="150" height="24" rx="12"/>' + L('M334 330 H456', 'bp-thin bp-dash') + T(395, 300, 'UV lampa', 'bp-t', 'middle') +
+    F('M90 330 V170 H140', 'cold') + T(96, 250, 'namuna', 'bp-ts') +
+    B(140, 130, 150, 80, 'O‘lchov kamerasi', 'pH · Rx · T') +
+    F('M290 170 H360', 'el') +
+    B(360, 130, 130, 80, 'Dozalash', 'kontrolleri') +
+    F('M490 150 H560', 'el') + F('M490 190 H560 V230 H660', 'el') +
+    B(540, 60, 80, 70, 'pH−', 'kanistra') + B(660, 60, 80, 70, 'Xlor', 'kanistra') +
+    B(560, 140, 60, 40, 'Nasos 1') + B(660, 210, 60, 40, 'Nasos 2') +
+    L('M580 130 V140 M700 130 V210', 'bp-thin') +
+    F('M590 180 V330', 'hot') + F('M690 250 V330', 'hot') +
+    '<circle class="bp-fill" cx="590" cy="330" r="7"/><circle class="bp-fill" cx="690" cy="330" r="7"/>' + T(640, 360, 'in‘eksiya nuqtalari', 'bp-ts', 'middle') +
+    C(1, 214, 120) + C(2, 425, 120) + C(3, 580, 50) + C(4, 700, 50) + C(5, 610, 200) + C(6, 395, 360) + C(7, 205, 370) + C(8, 590, 395) +
+    LG([['cold', 'suv'], ['el', 'signal'], ['hot', 'dozalash']])
+  );
+
+  var sensorsL = [['pH datchigi', 70], ['Xlor (Rx)', 130], ['Suv harorati', 190], ['Suv sathi', 250], ['Hammom namligi', 310], ['Filtr bosimi', 370]];
+  var actsR = [['Nasos (VFD)', 70], ['Dozalash', 130], ['Isitish klapani', 190], ['Bug‘ generatori', 250], ['Ventilyator', 310], ['Yoritish', 370]];
+  var avto = svg('Avtomatika sxemasi',
+    sensorsL.map(function (s, i) { return B(24, s[1] - 20, 130, 40, s[0]) + F('M154 ' + s[1] + ' H230 V' + (190 + i * 14) + ' H330', 'cold'); }).join('') +
+    B(330, 170, 140, 120, 'Kontroller', 'PLC · taymerlar') +
+    actsR.map(function (s, i) { return F('M470 ' + (190 + i * 14) + ' H560 V' + s[1] + ' H640', 'el') + B(640, s[1] - 20, 140, 40, s[0]); }).join('') +
+    B(330, 40, 140, 54, 'Sensorli panel', 'masofadan kuzatish') + F('M400 94 V170', 'air') +
+    B(330, 370, 140, 50, 'Avariya', 'signal · SMS') + F('M400 290 V370', 'hot') +
+    C(1, 18, 50) + C(2, 18, 170) + C(3, 18, 350) + C(4, 400, 160) + C(5, 786, 50) + C(6, 786, 170) + C(7, 786, 290) + C(8, 476, 40) + C(9, 476, 370) +
+    LG([['cold', 'datchik'], ['el', 'boshqaruv'], ['air', 'aloqa']])
+  );
+
   window.HV_BP = {
     filtr: {
       code: 'HV-01', name: 'Nasos va filtratsiya', svg: filtr,
@@ -220,6 +250,33 @@
         { t: 'Ventilyator', d: 'Namlikka chidamli, taymer va datchik bilan.' },
         { t: 'Rekuperator', d: 'Chiqayotgan havo issig‘i kirayotgan havoga beriladi.' },
         { t: 'Basseyn zali quritgichi', d: 'Zal havosidagi namlikni tortib oladi, oyna terlamaydi.' }
+      ]
+    },
+    kimyo: {
+      code: 'HV-06', name: 'Suv kimyosi', svg: kimyo,
+      notes: [
+        { t: 'O‘lchov kamerasi', d: 'pH va Rx (ORP) datchiklari suvni uzluksiz o‘lchaydi.' },
+        { t: 'Dozalash kontrolleri', d: 'Me‘yordan chiqsa o‘zi to‘g‘rilaydi, qo‘lda quyish yo‘q.' },
+        { t: 'pH− kanistrasi', d: 'pH 7,2–7,6 oralig‘ida: ko‘z achishmaydi, xlor samarali ishlaydi.' },
+        { t: 'Xlor kanistrasi', d: 'Erkin xlor 0,5–1,5 mg/l — hidsiz va toza suv.' },
+        { t: 'Peristaltik nasos 1', d: 'Mikro dozalar, aniq va jim.' },
+        { t: 'UV lampa', d: 'Mikroblarni zararsizlantiradi, xlor sarfini kamaytiradi.' },
+        { t: 'Issiqlik almashtirgich', d: 'Kimyo isitgichdan keyin qo‘shiladi — metall himoyalanadi.' },
+        { t: 'In‘eksiya nuqtalari', d: 'Qaytish liniyasida, basseynga kirishdan oldin.' }
+      ]
+    },
+    avto: {
+      code: 'HV-07', name: 'Avtomatika', svg: avto,
+      notes: [
+        { t: 'pH va xlor datchiklari', d: 'Suv sifati uzluksiz nazoratda.' },
+        { t: 'Harorat va sath', d: 'Suv sovisa isitish, kamaysa to‘ldirish yoqiladi.' },
+        { t: 'Namlik va bosim', d: 'Hammom namligi va filtr ifloslanishi kuzatiladi.' },
+        { t: 'Kontroller', d: 'Barcha signallar bitta joyda; taymer va ssenariylar.' },
+        { t: 'Nasos chastotasi', d: 'Kechasi sekin, kunduzi to‘liq — elektr tejaladi.' },
+        { t: 'Isitish va bug‘', d: 'Kelishingizdan oldin hammom tayyor bo‘ladi.' },
+        { t: 'Ventilyator va yoritish', d: 'Ssenariy bo‘yicha: “hammom”, “basseyn”, “tun”.' },
+        { t: 'Sensorli panel', d: 'Uydan yoki telefondan holatni ko‘rish imkoniyati.' },
+        { t: 'Avariya signali', d: 'Suv sathi, bosim yoki harorat xato bo‘lsa xabar beradi.' }
       ]
     }
   };

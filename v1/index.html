@@ -106,11 +106,58 @@
       </article>
     </div>
   </div>
+  <div class="hv-fly" data-fly hidden>
+    <div class="hv-fly__stage" data-fly-stage>
+      <div class="hv-fly__hud">
+        <article class="hv-fly__ch" data-ch="0">
+          <span class="hv-fly__no">01 / 03 · Nam issiqlik</span>
+          <h3>Turk hammomi</h3>
+          <dl class="hv-stats"><div><dt>Havo</dt><dd>40–50 °C</dd></div><div><dt>Namlik</dt><dd>≈100 %</dd></div><div><dt>Göbek taşı</dt><dd>isitiladi</dd></div><div><dt>Gumbaz</dt><dd>yorug‘lik teshiklari</dd></div></dl>
+          <ul class="hv-chips"><li>Marmar supa</li><li>Kurnalar</li><li>Bug‘ generatori</li><li>Issiq pol</li><li>Gumbaz</li><li>Trap va drenaj</li></ul>
+        </article>
+        <article class="hv-fly__ch" data-ch="1">
+          <span class="hv-fly__no">02 / 03 · Quruq issiqlik</span>
+          <h3>Fin saunasi</h3>
+          <dl class="hv-stats"><div><dt>Havo</dt><dd>80–100 °C</dd></div><div><dt>Namlik</dt><dd>10–20 %</dd></div><div><dt>Pech</dt><dd>≈1 kVt / m³</dd></div><div><dt>Liniya</dt><dd>3 faza, alohida</dd></div></dl>
+          <ul class="hv-chips"><li>Termo-yog‘och</li><li>Pech va toshlar</li><li>Izolyatsiya + folga</li><li>Ventilyatsiya</li><li>Shisha eshik</li><li>Yashirin LED</li></ul>
+        </article>
+        <article class="hv-fly__ch" data-ch="2">
+          <span class="hv-fly__no">03 / 03 · Toza suv</span>
+          <h3>Basseyn</h3>
+          <dl class="hv-stats"><div><dt>Suv</dt><dd>26–28 °C</dd></div><div><dt>pH</dt><dd>7,2–7,6</dd></div><div><dt>Erkin xlor</dt><dd>0,5–1,5 mg/l</dd></div><div><dt>To‘liq aylanish</dt><dd>4–6 soatda</dd></div></dl>
+          <ul class="hv-chips"><li>Skimmer yoki toshqin</li><li>Qum filtri</li><li>Issiqlik almashtirgich</li><li>UV</li><li>Avto-dozalash</li><li>Shisha mozaika</li></ul>
+        </article>
+        <div class="hv-fly__prog" aria-hidden="true"><i data-fly-bar></i><span>Hammom</span><span>Sauna</span><span>Basseyn</span></div>
+      </div>
+      <p class="hv-fly__hint" aria-hidden="true">Pastga aylantiring</p>
+    </div>
+  </div>
 </section>
 
 <section class="hv-band" aria-label="Hovlidagi hammom va basseyn">
   <div class="hv-band__media" data-parallax><img src="img/villa-1600.webp" srcset="img/villa-640.webp 640w, img/villa-1024.webp 1024w, img/villa-1600.webp 1600w, img/villa-2000.webp 2000w" sizes="100vw" decoding="async" alt="Tog‘ etagidagi villa: gumbazli hammom pavilyoni va toshqin basseyn" loading="lazy"></div>
   <div class="hv-wrap hv-band__text"><p data-reveal>Hammom, sauna va basseyn: bitta hovlida, bitta loyiha sifatida.</p></div>
+</section>
+
+<section class="hv-sec hv-ritual" id="ritual" aria-labelledby="ri-h">
+  <div class="hv-wrap">
+    <div class="hv-head" data-reveal>
+      <p class="hv-eyebrow">Hammom rituali</p>
+      <h2 id="ri-h">Issiqdan sokinlikka: besh qadam</h2>
+    </div>
+    <div class="hv-ritual__curve" data-reveal aria-hidden="true">
+      <svg viewBox="0 0 1200 220" preserveAspectRatio="none"><defs><linearGradient id="hvHeat" x1="0" x2="1"><stop offset="0" stop-color="#d69a6b"/><stop offset=".45" stop-color="#e9925b"/><stop offset="1" stop-color="#7fd3e6"/></linearGradient></defs>
+        <path class="hv-ritual__line" pathLength="1" d="M0 170 C120 160 160 60 240 50 S420 40 480 70 S640 60 720 80 S880 190 960 180 S1120 120 1200 130"/>
+      </svg>
+    </div>
+    <ol class="hv-ritual__steps" data-reveal>
+      <li><b>01</b><h3>Isinish</h3><p>Issiq marmar supada tana yumshaydi.</p><span>10–15 daq · 45 °C</span></li>
+      <li><b>02</b><h3>Kese</h3><p>Qo‘lqop bilan teri tozalanadi.</p><span>bug‘ ichida</span></li>
+      <li><b>03</b><h3>Ko‘pik</h3><p>Sovun ko‘pigi bilan massaj.</p><span>iliq suv</span></li>
+      <li><b>04</b><h3>Kurna</h3><p>Mis kosada navbat bilan chayish.</p><span>iliq → salqin</span></li>
+      <li><b>05</b><h3>Dam olish</h3><p>Salqin xonada choy va sukunat.</p><span>20+ daq</span></li>
+    </ol>
+  </div>
 </section>
 
 <section class="hv-sec hv-eng" id="muhandislik" aria-labelledby="eng-h">
@@ -131,12 +178,71 @@
         <button role="tab" aria-selected="false" data-tab="elektr"><span>03</span>Elektrika</button>
         <button role="tab" aria-selected="false" data-tab="santexnika"><span>04</span>Santexnika va drenaj</button>
         <button role="tab" aria-selected="false" data-tab="bug"><span>05</span>Bug‘ va ventilyatsiya</button>
+        <button role="tab" aria-selected="false" data-tab="kimyo"><span>06</span>Suv kimyosi</button>
+        <button role="tab" aria-selected="false" data-tab="avto"><span>07</span>Avtomatika</button>
       </div>
       <div class="hv-bp__sheet">
         <div class="hv-bp__title"><span data-bp-code>HV-01</span><span data-bp-name>Nasos va filtratsiya</span><span>Prinsipial sxema</span></div>
         <div class="hv-bp__draw" data-bp-draw></div>
       </div>
       <ol class="hv-bp__notes" data-bp-notes></ol>
+    </div>
+
+    <div class="hv-eq" data-eq>
+      <div class="hv-head hv-head--dark hv-eq__head" data-reveal>
+        <p class="hv-eyebrow">Texnik xona · 3D</p>
+        <h3 class="hv-eq__h">Suv yo‘li: basseyndan qurilmalar orqali qaytib</h3>
+      </div>
+      <div class="hv-eq__stage" data-eq-stage>
+        <div class="hv-eq__hud">
+          <ol class="hv-eq__steps">
+            <li data-st="0"><b>Umumiy ko‘rinish</b><small>Basseyn suvi kuniga bir necha marta shu xonadan aylanib o‘tadi.</small></li>
+            <li data-st="1"><b>Skimmer</b><small>Sirtdagi barg va yog‘ni yig‘adi; so‘rish liniyasi boshlanadi.</small><em>Ø 50–63 mm PVC</em></li>
+            <li data-st="2"><b>Prefiltr va nasos</b><small>Savat yirik axlatni ushlaydi, nasos suvni tizim bo‘ylab haydaydi.</small><em>Chastota o‘zgartirgich — jim va tejamkor</em></li>
+            <li data-st="3"><b>Qum filtri</b><small>Mayda zarrachalar qumda qoladi; 6 yo‘lli klapan bilan teskari yuviladi.</small><em>Manometr — yuvish vaqtini ko‘rsatadi</em></li>
+            <li data-st="4"><b>Issiqlik almashtirgich</b><small>Qozon halqasi issiqligini basseyn suviga beradi, suvlar aralashmaydi.</small><em>Plastinali, zanglamas</em></li>
+            <li data-st="5"><b>UV va dozalash</b><small>UV mikroblarni zararsizlantiradi; nasoslar pH va xlorni me‘yorda ushlaydi.</small><em>Qaytish liniyasiga in‘eksiya</em></li>
+            <li data-st="6"><b>Boshqaruv shiti</b><small>Nasos, isitish, dozalash va yoritish bitta shitdan boshqariladi.</small><em>Avtomat, RCD, taymerlar</em></li>
+            <li data-st="7"><b>Basseynga qaytish</b><small>Toza, iliq suv forsunkalar orqali kosaga bir tekis qaytadi.</small></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+
+    <div class="hv-norms" data-reveal>
+      <div class="hv-head hv-head--dark">
+        <p class="hv-eyebrow">Me‘yorlar</p>
+        <h3 class="hv-eq__h">Datchiklar shu oraliqlarni ushlab turadi</h3>
+      </div>
+      <div class="hv-gauges" data-gauges>
+        <figure class="hv-gauge" data-min="6.8" data-max="8" data-lo="7.2" data-hi="7.6" data-dec="1"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-band" d="M10 62 A50 50 0 0 1 110 62"/><line class="g-nd" x1="60" y1="62" x2="60" y2="20"/></svg><b data-val>7.4</b><figcaption>pH</figcaption><small>7,2–7,6</small></figure>
+        <figure class="hv-gauge" data-min="0" data-max="3" data-lo=".5" data-hi="1.5" data-dec="1"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-band" d="M10 62 A50 50 0 0 1 110 62"/><line class="g-nd" x1="60" y1="62" x2="60" y2="20"/></svg><b data-val>1.0</b><figcaption>Erkin xlor, mg/l</figcaption><small>0,5–1,5</small></figure>
+        <figure class="hv-gauge" data-min="20" data-max="34" data-lo="26" data-hi="28" data-dec="1"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-band" d="M10 62 A50 50 0 0 1 110 62"/><line class="g-nd" x1="60" y1="62" x2="60" y2="20"/></svg><b data-val>27</b><figcaption>Suv, °C</figcaption><small>26–28</small></figure>
+        <figure class="hv-gauge" data-min="30" data-max="80" data-lo="50" data-hi="60" data-dec="0"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-band" d="M10 62 A50 50 0 0 1 110 62"/><line class="g-nd" x1="60" y1="62" x2="60" y2="20"/></svg><b data-val>55</b><figcaption>Zal namligi, %</figcaption><small>50–60</small></figure>
+        <figure class="hv-gauge" data-min="60" data-max="110" data-lo="80" data-hi="100" data-dec="0"><svg viewBox="0 0 120 70"><path class="g-bg" d="M10 62 A50 50 0 0 1 110 62"/><path class="g-band" d="M10 62 A50 50 0 0 1 110 62"/><line class="g-nd" x1="60" y1="62" x2="60" y2="20"/></svg><b data-val>90</b><figcaption>Sauna, °C</figcaption><small>80–100</small></figure>
+      </div>
+    </div>
+
+    <div class="hv-layers" data-layers>
+      <div class="hv-head hv-head--dark" data-reveal>
+        <p class="hv-eyebrow">Kosa kesimi</p>
+        <h3 class="hv-eq__h">Mozaika ostida yetti qatlam</h3>
+      </div>
+      <div class="hv-layers__grid">
+        <div class="hv-layers__stack" aria-hidden="true">
+          <i style="--i:0" class="l-soil"></i><i style="--i:1" class="l-gravel"></i><i style="--i:2" class="l-concrete"></i><i style="--i:3" class="l-screed"></i><i style="--i:4" class="l-membrane"></i><i style="--i:5" class="l-glue"></i><i style="--i:6" class="l-mosaic"></i><i style="--i:7" class="l-water"></i>
+        </div>
+        <ol class="hv-layers__list">
+          <li style="--i:7"><b>Suv</b><span>to‘g‘ri kimyo — mozaika va choklar uzoq yashaydi</span></li>
+          <li style="--i:6"><b>Shisha mozaika</b><span>qo‘lda, naqsh bo‘yicha</span></li>
+          <li style="--i:5"><b>Elastik yelim va epoksi chok</b><span>harorat o‘zgarishiga chidaydi</span></li>
+          <li style="--i:4"><b>Gidroizolyatsiya</b><span>ikki qatlam, burchaklarda lenta</span></li>
+          <li style="--i:3"><b>Tekislash qatlami</b><span>mozaika uchun mukammal tekis sirt</span></li>
+          <li style="--i:2"><b>Temirbeton kosa</b><span>armatura, quvur gilzalari oldindan</span></li>
+          <li style="--i:1"><b>Shag‘al yostiq</b><span>zichlangan, drenaj bilan</span></li>
+          <li style="--i:0"><b>Grunt</b><span>o‘lchov va zichlash</span></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
@@ -160,6 +266,23 @@
   </div>
 </section>
 
+<section class="hv-sec hv-compare" id="nega" aria-labelledby="cm-h">
+  <div class="hv-wrap">
+    <div class="hv-head" data-reveal>
+      <p class="hv-eyebrow">Nega bitta jamoa</p>
+      <h2 id="cm-h">Besh pudratchi yoki bitta mas’ul</h2>
+    </div>
+    <div class="hv-compare__table" data-reveal role="table">
+      <div class="hv-compare__row hv-compare__row--h" role="row"><span role="columnheader"></span><span role="columnheader">Alohida ustalar</span><span role="columnheader">Halvet</span></div>
+      <div class="hv-compare__row" role="row"><b role="rowheader">Mas’ul</b><span role="cell">har biri o‘z qismiga</span><span role="cell">bitta shaxs — boshidan oxirigacha</span></div>
+      <div class="hv-compare__row" role="row"><b role="rowheader">Chizmalar</b><span role="cell">kelishilmagan, joyida o‘zgaradi</span><span role="cell">quvur, kabel va kosa bitta loyihada</span></div>
+      <div class="hv-compare__row" role="row"><b role="rowheader">Gidroizolyatsiya va quvurlar</b><span role="cell">turli brigadalar, chok xavfi</span><span role="cell">ketma-ketligi rejalashtirilgan</span></div>
+      <div class="hv-compare__row" role="row"><b role="rowheader">Ishga tushirish</b><span role="cell">“bu mening ishim emas”</span><span role="cell">o‘zimiz sozlaymiz va o‘rgatamiz</span></div>
+      <div class="hv-compare__row" role="row"><b role="rowheader">Servis</b><span role="cell">kimni chaqirishni bilmaysiz</span><span role="cell">filtr, kimyo, uskunalar — bir raqam</span></div>
+    </div>
+  </div>
+</section>
+
 <section class="hv-sec hv-process" id="jarayon" aria-labelledby="pr-h">
   <div class="hv-wrap">
     <div class="hv-head" data-reveal>
@@ -175,6 +298,23 @@
       <li><span>05</span><h3>Pardoz</h3></li>
       <li><span>06</span><h3>Ishga tushirish</h3></li>
     </ol>
+  </div>
+</section>
+
+<section class="hv-sec hv-faq" id="savollar" aria-labelledby="fq-h">
+  <div class="hv-wrap hv-faq__grid">
+    <div class="hv-head" data-reveal>
+      <p class="hv-eyebrow">Savollar</p>
+      <h2 id="fq-h">Ko‘p so‘raladi</h2>
+    </div>
+    <div class="hv-faq__list" data-reveal>
+      <details><summary>Faqat muhandislik qismini olsangiz bo‘ladimi?</summary><p>Ha. Nasos-filtr, isitish, elektrika yoki ventilyatsiyani alohida loyihalab o‘rnatamiz — qurilish boshqa jamoada bo‘lsa ham.</p></details>
+      <details><summary>Mavjud basseyn yoki hammomni ta’mirlaysizmi?</summary><p>Ha. Avval tashrif bilan qurilmalar, quvurlar va gidroizolyatsiya holatini ko‘ramiz, keyin nima almashtirilishini yozib beramiz.</p></details>
+      <details><summary>Loyiha qancha vaqt oladi?</summary><p>Hajm va materialga bog‘liq. Smetada har bir bosqich muddati alohida yoziladi.</p></details>
+      <details><summary>Basseyn suvini kim parvarish qiladi?</summary><p>Avto-dozalash pH va xlorni o‘zi ushlaydi. Filtr yuvish, kimyo va mavsumiy xizmatni topshirilgandan keyin ham bajaramiz.</p></details>
+      <details><summary>Hammom uchun qancha joy kerak?</summary><p>Kichik shaxsiy hammom uyning bitta xonasiga sig‘adi. Tashrifda poydevor, suv, kanalizatsiya va elektr kirishini ko‘rib, aniq yechim beramiz.</p></details>
+      <details><summary>Materiallarni o‘zim tanlay olamanmi?</summary><p>Albatta. Marmar, mozaika va yog‘och namunalarini birga tanlaymiz.</p></details>
+    </div>
   </div>
 </section>
 

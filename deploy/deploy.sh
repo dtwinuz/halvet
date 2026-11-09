@@ -17,7 +17,7 @@ SHA="$(git rev-parse HEAD)"
 STAGE="$(mktemp -d)"
 trap 'rm -rf "$STAGE"' EXIT
 mkdir -p "$STAGE/site/img" "$STAGE/site/fonts" "$STAGE/site/vendor"
-cp v1/index.html v1/styles.css v1/app.js v1/blueprints.js v1/fog.js v1/dome.js v1/icon.svg v1/robots.txt v1/sitemap.xml "$STAGE/site/"
+cp v1/index.html v1/styles.css v1/app.js v1/blueprints.js v1/fog.js v1/dome.js v1/spaces3d.js v1/equip3d.js v1/icon.svg v1/robots.txt v1/sitemap.xml "$STAGE/site/"
 cp v1/img/*.jpg v1/img/*.webp "$STAGE/site/img/"
 cp v1/fonts/*.woff2 "$STAGE/site/fonts/"
 cp v1/vendor/*.js "$STAGE/site/vendor/"

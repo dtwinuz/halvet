@@ -278,6 +278,94 @@
     });
   }
 
+  /* pin qilingan 3D sahna: sticky stage + scroll progress + lazy modul */
+  var pinned3d = function (track, stage, mod, fn, onP, onFail) {
+    var h3 = null;
+    scrollFx.push(function (vh) {
+      var r = track.getBoundingClientRect(), prev = stage.previousElementSibling;
+      var off = prev ? prev.getBoundingClientRect().bottom - r.top : 0;
+      if (r.bottom < -vh || r.top > vh * 1.5) return;
+      var p = clamp(-(r.top + off) / Math.max(1, r.height - off - vh), 0, 1);
+      if (h3) h3.setProgress(p);
+      onP(p);
+    });
+    new IntersectionObserver(function (e, o) {
+      if (!e[0].isIntersecting) return;
+      o.disconnect();
+      import('./' + mod + (VER ? '?v=' + VER : '')).then(function (m) { return m[fn](stage, { reduce: reduce, onLost: onFail }); })
+        .then(function (h) { h3 = h; onScroll(); }).catch(onFail);
+    }, { rootMargin: '900px 0px' }).observe(track);
+  };
+  var glOk2 = (function () { try { var c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
+  var use3d = glOk2 && !reduce && !(navigator.connection && navigator.connection.saveData);
+
+  /* makonlar: 3D kamera parvozi */
+  var fly = $('[data-fly]'), flyStage = $('[data-fly-stage]'), spSec = $('#makonlar');
+  if (fly && use3d) {
+    fly.hidden = false; spSec.classList.add('is-fly');
+    var chs = $$('[data-ch]', fly), bar3 = $('[data-fly-bar]', fly), CH = [[.06, .33], [.42, .68], [.76, 1.01]];
+    pinned3d(fly, flyStage, 'spaces3d.js', 'mountSpaces', function (p) {
+      chs.forEach(function (c, i) { c.classList.toggle('is-on', p >= CH[i][0] && p < CH[i][1]); });
+      bar3.style.setProperty('--p', p.toFixed(3));
+      flyStage.classList.toggle('is-start', p < .04);
+    }, function () { fly.hidden = true; spSec.classList.remove('is-fly'); });
+  }
+
+  /* texnik xona 3D: suv yo'li */
+  var eq = $('[data-eq]'), eqStage = $('[data-eq-stage]');
+  if (eq) {
+    var sts = $$('[data-st]', eq);
+    if (use3d) {
+      eq.classList.add('is-3d');
+      pinned3d(eq, eqStage, 'equip3d.js', 'mountEquip', function (p) {
+        var cur = Math.round(p * (sts.length - 1));
+        sts.forEach(function (li, i) { li.classList.toggle('is-on', i === cur); li.classList.toggle('is-done', i < cur); });
+      }, function () { eq.classList.remove('is-3d'); });
+    }
+  }
+
+  /* me'yor datchiklari: strelka me'yor oralig'ida tebranadi */
+  var gauges = $$('.hv-gauge');
+  if (gauges.length) {
+    var gOn = false, gRun = false;
+    gauges.forEach(function (g) {
+      var mn = +g.dataset.min, mxv = +g.dataset.max, lo = +g.dataset.lo, hi = +g.dataset.hi;
+      var a = (lo - mn) / (mxv - mn) * 100, b = (hi - mn) / (mxv - mn) * 100, band = $('.g-band', g);
+      band.setAttribute('pathLength', '100'); $('.g-bg', g).setAttribute('pathLength', '100');
+      band.setAttribute('stroke-dasharray', '0 ' + a.toFixed(1) + ' ' + (b - a).toFixed(1) + ' 200');
+    });
+    var gTick = function (now) {
+      if (!gOn) { gRun = false; return; }
+      gauges.forEach(function (g, i) {
+        var mn = +g.dataset.min, mxv = +g.dataset.max, lo = +g.dataset.lo, hi = +g.dataset.hi;
+        var v = (lo + hi) / 2 + (hi - lo) / 2 * .75 * Math.sin(now / 1000 * (.35 + i * .07) + i * 1.3);
+        var ang = ((v - mn) / (mxv - mn) - .5) * 180;
+        $('.g-nd', g).setAttribute('transform', 'rotate(' + ang.toFixed(1) + ' 60 62)');
+        $('[data-val]', g).textContent = v.toFixed(+g.dataset.dec).replace('.', ',');
+      });
+      requestAnimationFrame(gTick);
+    };
+    new IntersectionObserver(function (e) { gOn = e[0].isIntersecting && !reduce; if (gOn && !gRun) { gRun = true; requestAnimationFrame(gTick); } }).observe($('[data-gauges]'));
+    if (reduce) gTick(0);
+  }
+
+  /* kosa qatlamlari: scroll bilan ajraladi, ro'yxat qatlamni yoritadi */
+  var lay = $('[data-layers]');
+  if (lay) {
+    var stack = $('.hv-layers__stack', lay), lis = $$('.hv-layers__list li', lay), ls = $$('i', stack);
+    if (!reduce) scrollFx.push(function (vh) {
+      var r = stack.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      stack.style.setProperty('--ex', clamp((vh * .9 - r.top) / (vh * .7), 0, 1).toFixed(3));
+    });
+    lis.forEach(function (li) {
+      var i = +li.style.getPropertyValue('--i');
+      var on = function (v) { ls[i].classList.toggle('is-hot', v); li.classList.toggle('is-hot', v); stack.classList.toggle('has-hot', v); };
+      li.addEventListener('mouseenter', function () { on(true); });
+      li.addEventListener('mouseleave', function () { on(false); });
+    });
+  }
+
   /* spaces */
   var spaces = $$('[data-space]');
   var openSpace = function (s) { spaces.forEach(function (x) { x.classList.toggle('is-open', x === s); }); };
