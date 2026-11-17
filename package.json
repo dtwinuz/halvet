@@ -1,0 +1,16 @@
+{
+  "name": "halvet-site",
+  "private": true,
+  "type": "module",
+  "description": "Halvet: shaxsiy hammom, sauna va basseynlar sayti (statik, v1/)",
+  "scripts": {
+    "i18n:build": "node tools/i18n.mjs build",
+    "build:demo": "node tools/demo-build.mjs",
+    "serve:demo": "node tools/demo/serve.mjs",
+    "site:screenshots": "node tools/demo-build.mjs && node tools/demo/site-screenshots.mjs",
+    "test:demo": "node tools/demo-build.mjs && playwright test -c playwright.demo.config.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

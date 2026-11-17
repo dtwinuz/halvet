@@ -13,3 +13,9 @@ v1/index.en.html
 v1/*.ru.js
 v1/*.en.js
 i18n/*.missing.json
+
+# demo (tools/demo-build.mjs) va Playwright
+node_modules/
+dist-demo/
+test-results/
+playwright-report/
